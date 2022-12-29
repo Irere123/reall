@@ -1,4 +1,5 @@
-<a href="https://dogehouse.tv"><p align="center">
+<a href="https://reall.vercel.app">
+<p align="center">
 <img height=100 src="https://raw.githubusercontent.com/Irere123/reall/prod/assets/reall_logo.svg
 "/>
 
@@ -13,7 +14,6 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. I
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
