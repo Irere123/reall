@@ -1,5 +1,8 @@
-<img src="https://www.figma.com/file/I8w8NkoieLiw8QZ9i5KbYG/Reall?node-id=110%3A6&t=j8eo0ulgqbzFnlnm-4">
+<a href="https://dogehouse.tv"><p align="center">
+<img height=100 src="https://raw.githubusercontent.com/Irere123/reall/prod/assets/reall_logo.svg
+"/>
 
+</p></a>
 <p align="center">
   <strong>Taking communication to the moon 🚀</strong>
 </p>
