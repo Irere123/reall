@@ -5,7 +5,7 @@ import { HomeIcon, Logo, PeopleIcon } from "../../icons";
 
 export const Sidebar: React.FC = () => {
   return (
-    <div className="flex items-center flex-col pt-3">
+    <div className="flex items-center flex-col">
       <Link href={`/feed`}>
         <Logo />
       </Link>
