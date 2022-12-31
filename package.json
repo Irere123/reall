@@ -10,12 +10,25 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install",
+    "commit": "cz",
+    "commit:signed": "cz -S"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "commitizen": "^4.2.6",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint-config-custom": "*",
     "prettier": "latest",
     "turbo": "latest"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "defaultScope": "global"
+    }
   },
   "engines": {
     "node": ">=14.0.0"
