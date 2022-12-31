@@ -18,6 +18,7 @@ defmodule Api.MixProject do
     dev_only_apps = List.wrap(if Mix.env() == :dev, do: :remix)
 
     [
+      mod: {Api, []},
       # moved logger to 2nd position to kill this error
       # calling logger:remove_handler(default) failed: :error {:badmatch, {:error, {:not_found, :default}}}
       extra_applications:

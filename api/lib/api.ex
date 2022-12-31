@@ -1,18 +1,39 @@
 defmodule Api do
-  @moduledoc """
-  Documentation for `Api`.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    children = [
+      {Api.Repo, []},
+      {Plug.Cowboy,
+       scheme: :http,
+       plug: Api.Router,
+       options: [
+         port: String.to_integer(System.get_env("PORT") || "4000"),
+         dispatch: dispatch(),
+         protocol_options: [idle_timeout: :infinity]
+       ]}
+    ]
 
-  ## Examples
+    opts = [strategy: :one_for_one, name: Api.Supervisor]
 
-      iex> Api.hello()
-      :world
+    # TODO: make these into taks
 
-  """
-  def hello do
-    :world
+    case Supervisor.start_link(children, opts) do
+      {:ok, pid} ->
+        {:ok, pid}
+
+      error ->
+        error
+    end
+  end
+
+  defp dispatch do
+    [
+      {:_,
+       [
+         {"/socket", Api.SocketHandler, []},
+         {:_, Plug.Cowboy.Handler, {Api.Router, []}}
+       ]}
+    ]
   end
 end
