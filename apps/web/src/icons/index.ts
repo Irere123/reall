@@ -5,3 +5,6 @@ export { default as LgLogo } from "./LgLogo";
 export { default as FacebookIcon } from "./FacebookIcon";
 export { default as Logo } from "./Logo";
 export { default as PeopleIcon } from "./PeopleIcon";
+export { default as SearchIcon } from "./SearchIcon";
+export { default as SendIcon } from "./SendIcon";
+export { default as InboxIcon } from "./InboxIcon";
