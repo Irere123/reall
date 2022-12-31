@@ -4,6 +4,7 @@ defmodule Api.Router do
   alias Api.Routes.DevOnly
 
   use Plug.Router
+  plug(Api.Plugs.Cors)
   plug(:match)
   plug(:dispatch)
 
