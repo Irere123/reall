@@ -7,7 +7,7 @@ import { MainLayout } from "../layouts/MainLayout";
 export const MessagesPage: React.FC = () => {
   return (
     <MainLayout>
-      <HeaderController embed={{}} title={`Chat`} />
+      <HeaderController embed={{}} title={`Messages`} />
       <MiddlePanel stickyChildren={<MiddleHeader />}>
         <h3>Chattings </h3>
       </MiddlePanel>
