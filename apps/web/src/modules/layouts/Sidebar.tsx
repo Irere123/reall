@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { HomeIcon, Logo, PeopleIcon } from "../../icons";
+import { HomeIcon, Logo, PeopleIcon, SettingsIcon } from "../../icons";
 
 export const Sidebar: React.FC = () => {
   return (
@@ -13,8 +13,11 @@ export const Sidebar: React.FC = () => {
         <Link href={`/feed`}>
           <HomeIcon />
         </Link>
-        <Link href={`/people`}>
+        <Link href={`/friends`}>
           <PeopleIcon />
+        </Link>
+        <Link href={`/u/settings`}>
+          <SettingsIcon />
         </Link>
       </div>
     </div>
