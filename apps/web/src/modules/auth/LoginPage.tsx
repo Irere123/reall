@@ -1,15 +1,108 @@
-import React from "react";
-import { HomeIcon } from "../../icons";
+import React, { useCallback } from "react";
+import {
+  FacebookIcon,
+  GithubIcon,
+  HomeIcon,
+  LgLogo,
+  TwitterIcon,
+} from "../../icons";
+import { apiUrl } from "../../lib/constants";
+import { Button } from "../../ui/Button";
 import { HeaderController } from "../display/HeaderController";
+
+interface LoginButtonProps {
+  children: [React.ReactNode, React.ReactNode];
+  color?: "secondary" | "primary";
+  onClick?: () => void;
+  oauthUrl?: string; // React.FC didn't like & ({ onClick: () => void } | { oauthUrl: string })
+}
+
+const LoginButton: React.FC<LoginButtonProps> = ({
+  children,
+  onClick,
+  oauthUrl,
+  color = "secondary",
+  ...props
+}) => {
+  const clickHandler = useCallback(() => {
+    window.location.href = oauthUrl as string;
+  }, []);
+
+  return (
+    <Button
+      className="justify-center text-base py-3 mt-2"
+      color={color}
+      onClick={oauthUrl ? clickHandler : onClick}
+      {...props}
+    >
+      <div
+        className="grid gap-4"
+        style={{
+          gridTemplateColumns: "1fr auto 1fr",
+        }}
+      >
+        {children[0]}
+        {children[1]}
+        <div />
+      </div>
+    </Button>
+  );
+};
 
 export const LoginPage: React.FC = () => {
   return (
-    <div>
-      <HeaderController title="Login" />
-      <HomeIcon />
-      <h1 className="text-primary-2 text-3xl font-bold underline">
-        Hello world!
-      </h1>
+    <div
+      className="grid w-full h-full"
+      style={{ gridTemplateRows: "1fr auto 1fr" }}
+    >
+      <HeaderController embed={{}} title="Login" />
+      <div className="hidden sm:flex" />
+      <div className="flex justify-self-center self-center sm:hidden">
+        <LgLogo />
+      </div>
+      <div className="flex m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
+        <div className="flex justify-center">
+          <h3 className="text-secondary-1">Login</h3>
+        </div>
+        <div className="flex flex-col gap-2">
+          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/facebook`}>
+            <FacebookIcon width={20} height={20} />
+            Continue with Facebook
+          </LoginButton>
+          <LoginButton oauthUrl={`${apiUrl}/auth/twitter`}>
+            <TwitterIcon width={20} height={20} />
+            Continue with Twitter
+          </LoginButton>
+          <div className="border-b-2 border-primary-2" />
+        </div>
+      </div>
+      <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">
+        <div className="hidden sm:flex">
+          <LgLogo />
+        </div>
+        <div className="flex flex-row gap-6 text-secondary-2">
+          <div className="flex flex-row gap-6 sm:gap-4">
+            <a
+              href="https://github.com/benawad/dogehouse"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <TwitterIcon
+                width={20}
+                height={20}
+                className="ml-2 cursor-pointer hover:text-secondary-2"
+              />
+            </a>
+            <a
+              href="https://discord.gg/wCbKBZF9cV"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <GithubIcon width={20} height={20} />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
