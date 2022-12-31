@@ -1,6 +1,6 @@
 import React from "react";
+import { Card } from "../../ui/Card";
 import { MiddleHeader } from "../../ui/header/MiddleHeader";
-import { SearchBar } from "../../ui/Search/SearchBar";
 import { HeaderController } from "../display/HeaderController";
 import { MiddlePanel } from "../layouts/GridPanels";
 import { MainLayout } from "../layouts/MainLayout";
@@ -10,7 +10,9 @@ export const FeedPage = () => {
     <MainLayout>
       <HeaderController embed={{}} title={`Dashboard`} />
       <MiddlePanel stickyChildren={<MiddleHeader />}>
-        <h3>hello home</h3>
+        <div className="">
+          <Card />
+        </div>
       </MiddlePanel>
     </MainLayout>
   );

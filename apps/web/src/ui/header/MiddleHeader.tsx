@@ -1,10 +1,10 @@
 import React from "react";
+import Link from "next/link";
 
 import img from "../../img/irere.jpg";
 import { InboxIcon, SendIcon } from "../../icons";
 import { SearchBar } from "../Search/SearchBar";
 import { SingleUser } from "../UserAvatar/UserAvatar";
-import Link from "next/link";
 
 export const MiddleHeader = () => {
   return (
