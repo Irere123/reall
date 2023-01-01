@@ -6,8 +6,8 @@ defmodule Api.Plugs.Cors do
 
   def call(conn, _opts) do
     conn
-    |> put_resp_header("Acess-Control-Allow-Origin", "*")
-    |> put_resp_header("Acess-Control-Allow-Method", "POST, GET, OPTIONS")
+    |> put_resp_header("Access-Control-Allow-Origin", "*")
+    |> put_resp_header("Access-Control-Allow-Method", "POST, GET, OPTIONS")
     |> put_resp_header("Access-Control-Max-Age", "86400")
     |> put_resp_header(
       "Access-Control-Allow-Headers",

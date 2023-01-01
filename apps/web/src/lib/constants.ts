@@ -1,10 +1,10 @@
 /* eslint-disable turbo/no-undeclared-env-vars */
-export const prod = process.env.NODE_ENV === "production";
+export const __prod__ = process.env.NODE_ENV === "production";
 
-export const baseUrl = !prod
+export const baseUrl = !__prod__
   ? "http://localhost:3000"
   : "https://reall.vercel.app";
 
-export const apiUrl = !prod
+export const apiUrl = !__prod__
   ? "http://localhost:4000"
   : "https://reall.onrender.app";

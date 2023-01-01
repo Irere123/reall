@@ -10,7 +10,7 @@ export default function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <g clip-path="url(#clip0_110_254)">
+      <g clipPath="url(#clip0_110_254)">
         <path
           d="M12 23.5C18.3512 23.5 23.5 18.3512 23.5 12C23.5 5.64875 18.3512 0.5 12 0.5C5.64875 0.5 0.5 5.64875 0.5 12C0.5 18.3512 5.64875 23.5 12 23.5Z"
           fill="white"
