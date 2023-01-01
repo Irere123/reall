@@ -1,6 +1,8 @@
 defmodule Api.Router do
   import Plug.Conn
 
+  alias Api.Routes.FacebookAuth
+  alias Api.Routes.TwitterAuth
   alias Api.Routes.DevOnly
 
   use Plug.Router
@@ -13,6 +15,8 @@ defmodule Api.Router do
   end
 
   forward("/dev", to: DevOnly)
+  forward("/auth/facebook", to: FacebookAuth)
+  forward("/auth/twitter", to: TwitterAuth)
 
   get _ do
     send_resp(conn, 404, "not found")

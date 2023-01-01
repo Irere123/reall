@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   BugIcon,
   FacebookIcon,
@@ -7,9 +7,10 @@ import {
   LgLogo,
   TwitterIcon,
 } from "../../icons";
-import { apiUrl, __prod__ } from "../../lib/constants";
+import { apiUrl, loginNextPathKey, __prod__ } from "../../lib/constants";
 import { Button } from "../../ui/Button";
 import { HeaderController } from "../display/HeaderController";
+import { useSaveTokensFromQueryParams } from "./useSaveTokensFromQueryParams";
 import { useTokenStore } from "./useTokenStore";
 
 interface LoginButtonProps {
@@ -26,13 +27,15 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   color = "secondary",
   ...props
 }) => {
-  // const clickHandler = useCallback(() => {
-  //   window.location.href = oauthUrl as string;
-  // }, []);
-
-  function clickHandler() {
-    console.log("yyooo");
-  }
+  const { query: params } = useRouter();
+  const clickHandler = useCallback(() => {
+    if (typeof params.next === "string" && params.next) {
+      try {
+        localStorage.setItem(loginNextPathKey, params.next);
+      } catch {}
+    }
+    window.location.href = oauthUrl as string;
+  }, [params, oauthUrl]);
 
   return (
     <Button
@@ -56,7 +59,20 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 };
 
 export const LoginPage: React.FC = () => {
+  useSaveTokensFromQueryParams();
   const { push } = useRouter();
+  const [tokensChecked, setTokensChecked] = useState(false);
+  const hasTokens = useTokenStore((s) => !!(s.accessToken && s.refreshToken));
+
+  useEffect(() => {
+    if (hasTokens) {
+      push("/feed");
+    } else {
+      setTokensChecked(true);
+    }
+  }, [hasTokens, push]);
+
+  if (!tokensChecked) return null;
 
   return (
     <div
@@ -73,11 +89,11 @@ export const LoginPage: React.FC = () => {
           <h3 className="text-secondary-1">Login</h3>
         </div>
         <div className="flex flex-col gap-2">
-          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/facebook`}>
+          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/facebook/web`}>
             <FacebookIcon width={20} height={20} />
             Continue with Facebook
           </LoginButton>
-          <LoginButton oauthUrl={`${apiUrl}/auth/twitter`}>
+          <LoginButton oauthUrl={`${apiUrl}/auth/twitter/web`}>
             <TwitterIcon width={20} height={20} />
             Continue with Twitter
           </LoginButton>

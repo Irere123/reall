@@ -11,4 +11,10 @@ defmodule Adapters.Users do
   """
 
   defdelegate get_by_username(username), to: Adapters.Access.Users
+
+  # MUTATIONS
+
+  defdelegate set_online(user_id), to: Adapters.Mutations.Users
+
+  defdelegate twitter_find_or_create(user), to: Adapters.Mutations.Users
 end
