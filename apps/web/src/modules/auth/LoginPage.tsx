@@ -61,7 +61,7 @@ export const LoginPage: React.FC = () => {
   return (
     <div
       className="grid w-full h-full"
-      style={{ gridTemplateRows: "1fr auto 1fr" }}
+      style={{ gridTemplateRows: "0.3fr auto 1fr" }}
     >
       <HeaderController embed={{}} title="Login" />
       <div className="hidden sm:flex" />
@@ -117,7 +117,7 @@ export const LoginPage: React.FC = () => {
         <div className="flex flex-row gap-6 text-secondary-2">
           <div className="flex flex-row gap-6 sm:gap-4">
             <a
-              href="https://github.com/benawad/dogehouse"
+              href="https://twitter.com/irere_emmanuel"
               target="_blank"
               rel="noreferrer"
             >
@@ -128,7 +128,7 @@ export const LoginPage: React.FC = () => {
               />
             </a>
             <a
-              href="https://discord.gg/wCbKBZF9cV"
+              href="https://github.com/Irere123/reall"
               target="_blank"
               rel="noreferrer"
             >
