@@ -12,11 +12,13 @@ defmodule Api.Repo.Migrations.UserModel do
       add :bio, :text, default: ""
       add :goal, :text, default: "friendship"
       add :avatarUrl, :text, null: false
+      add :bannerUrl, :text, null: true
       add :tokenVersion, :integer, default: 1
+      add :age, :integer, null: true
       add :contributions, :integer, default: 0
       add :numLikes, :integer, default: 0
       add :numMatches, :integer, default: 0
-      add :birthday, :naive_datetime, null: false
+      # add :birthday, :naive_datetime, null: false
       add :online, :boolean, default: false
       add :lastOnline, :naive_datetime
       add :githubId, :text, null: true

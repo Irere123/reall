@@ -1,18 +1,20 @@
+import { useRouter } from "next/router";
 import React, { useCallback } from "react";
 import {
+  BugIcon,
   FacebookIcon,
   GithubIcon,
-  HomeIcon,
   LgLogo,
   TwitterIcon,
 } from "../../icons";
-import { apiUrl } from "../../lib/constants";
+import { apiUrl, __prod__ } from "../../lib/constants";
 import { Button } from "../../ui/Button";
 import { HeaderController } from "../display/HeaderController";
+import { useTokenStore } from "./useTokenStore";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
-  color?: "secondary" | "primary";
+  color?: "secondary" | "primary" | "accent";
   onClick?: () => void;
   oauthUrl?: string; // React.FC didn't like & ({ onClick: () => void } | { oauthUrl: string })
 }
@@ -24,9 +26,13 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   color = "secondary",
   ...props
 }) => {
-  const clickHandler = useCallback(() => {
-    window.location.href = oauthUrl as string;
-  }, []);
+  // const clickHandler = useCallback(() => {
+  //   window.location.href = oauthUrl as string;
+  // }, []);
+
+  function clickHandler() {
+    console.log("yyooo");
+  }
 
   return (
     <Button
@@ -50,6 +56,8 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 };
 
 export const LoginPage: React.FC = () => {
+  const { push } = useRouter();
+
   return (
     <div
       className="grid w-full h-full"
@@ -74,6 +82,32 @@ export const LoginPage: React.FC = () => {
             Continue with Twitter
           </LoginButton>
           <div className="border-b-2 border-primary-2" />
+          {!__prod__ && (
+            <LoginButton
+              color="accent"
+              onClick={async () => {
+                const name = window.prompt("username");
+
+                if (!name) {
+                  return;
+                }
+
+                const r = await fetch(
+                  `${apiUrl}/dev/test-info?username=` + name
+                );
+
+                const d = await r.json();
+                useTokenStore.getState().setTokens({
+                  accessToken: d.accessToken,
+                  refreshToken: d.refreshToken,
+                });
+                push("/feed");
+              }}
+            >
+              <BugIcon width={20} height={20} />
+              Create a test user
+            </LoginButton>
+          )}
         </div>
       </div>
       <div className="flex flex-row absolute bottom-0 w-full justify-between px-5 py-5 mt-auto items-center sm:px-7">

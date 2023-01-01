@@ -9,7 +9,8 @@ defmodule Api.Schemas.User do
     field(:username, :string)
     field(:email, :string)
     field(:schoolName, :string)
-    field(:birthday, :utc_datetime_usec)
+    field(:age, :integer)
+    # field(:birthday, :utc_datetime_usec)
     field(:avatarUrl, :string)
     field(:bannerUrl, :string)
     field(:goal, :string)
@@ -28,6 +29,8 @@ defmodule Api.Schemas.User do
     field(:ip, :string)
     field(:numLikes, :integer)
     field(:numMatches, :integer)
+
+    timestamps()
   end
 
   def changeset(user, attrs) do

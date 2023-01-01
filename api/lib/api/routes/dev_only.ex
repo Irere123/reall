@@ -25,13 +25,14 @@ defmodule Api.Routes.DevOnly do
                 Api.Repo.insert!(
                   %User{
                     username: username,
-                    email: "test@" <> username <> "test.com",
+                    email: "test@" <> username <> ".com",
                     githubAccessToken: "",
+                    age: 18,
                     githubId: "id:" <> username,
                     avatarUrl: "https://placekitten.com/200/200",
                     bannerUrl: "https://placekitten.com/1000/300",
                     bio:
-                      "This is some interesting info about the ex-founder of nothing, welcome to the bio of such a ocol pers on !"
+                      "This is some interesting info about the ex-founder of nothing, welcome to the bio of such a ocol person !"
                   },
                   returning: true
                 ),
