@@ -6,6 +6,7 @@ defmodule Api.Schemas.User do
   import Ecto.Changeset
 
   @timestamps_opts [type: :utc_datetime_usec]
+  @derive {Jason.Encoder, only: ~w( id username avatarUrl bio goal gender online lastOnline schoolName age)a}
   @primary_key {:id, :binary_id, []}
   schema "users" do
     field(:username, :string)
@@ -39,17 +40,5 @@ defmodule Api.Schemas.User do
     user
     |> cast(attrs, ~w(username githubId avatarUrl bannerUrl)a)
     |> validate_required([:username, :githubId, :avatarUrl, :bannerUrl])
-  end
-
-  defimpl Jason.Encoder do
-    @fields ~w(id username avatarUrl email bio
-      gender goal schoolName birthday online lastOnline
-    )
-
-    def encode(user, opts) do
-      user
-      |> Map.take(@fields)
-      |> Jason.Encoder.encode(opts)
-    end
   end
 end

@@ -6,17 +6,12 @@ defmodule Api.Message.Auth.Request do
   embedded_schema do
     field(:accessToken, :string)
     field(:refreshToken, :string)
-    field(:platform, :string)
-    field(:currentRoomId, :binary_id)
-    field(:reconnectToVoice, :boolean)
-    field(:muted, :boolean, default: false)
-    field(:deafened, :boolean, default: false)
   end
 
   @impl true
   def changeset(initializer \\ %__MODULE__{}, data) do
     initializer
-    |> cast(data, [:accessToken, :refreshToken, :platform, :reconnectToVoice, :muted, :deafened])
+    |> cast(data, [:accessToken, :refreshToken])
     |> validate_required([:accessToken])
   end
 
@@ -44,13 +39,11 @@ defmodule Api.Message.Auth.Request do
     end
   end
 
-  alias Api.Auth
-
   @impl true
   def execute(changeset, state) do
     with {:ok, request} <- apply_action(changeset, :validate),
-         {:ok, user} <- Auth.authenticate(request, state.ip) do
-      {:reply, user, state}
+         {:ok, user} <- Api.Auth.authenticate(request, state.ip) do
+      {:reply, %{user: user}, %{state | user: user}}
     else
       # don't tolerate malformed requests with any response besides closing
       # out websocket.

@@ -95,7 +95,14 @@ defmodule Api.SocketHandler do
          # translation from legacy maps to new maps
          {:ok, message = %{errors: nil}} <- validate(message_map!, state),
          :ok <- auth_check(message, state) do
-      dispatch(message, state)
+      new_state =
+        if message.operator == Api.Message.Auth.Request do
+          adopt_version(state, message)
+        else
+          state
+        end
+
+      dispatch(message, new_state)
     else
       {:error, :auth} ->
         ws_push({:close, 4004, "not_authenticated"}, state)
@@ -123,6 +130,10 @@ defmodule Api.SocketHandler do
     message
     |> Api.Message.changeset(state)
     |> apply_action(:validate)
+  end
+
+  def adopt_version(target = %{version: _}, %{version: version}) do
+    %{target | version: version}
   end
 
   def auth_check(%{operator: op}, state), do: op.auth_check(state)

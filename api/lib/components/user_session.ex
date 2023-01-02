@@ -1,7 +1,6 @@
 defmodule Components.UserSession do
   use GenServer, restart: :temporary
 
-  # TODO: change this
   defmodule State do
     defstruct user_id: nil,
               ip: nil,
@@ -72,7 +71,7 @@ defmodule Components.UserSession do
 
   defp new_tokens_impl(tokens, state = %{pid: pid}) do
     # TODO: refactor this to not use ws-datastructures
-    if pid, do: Api.SocketHandler.remote_send(pid, %{op: "new-tokens", d: tokens})
+    if pid, do: Api.SocketHandler.remote_send(pid, %{op: "new-tokens", p: tokens})
     {:noreply, state}
   end
 
@@ -82,10 +81,18 @@ defmodule Components.UserSession do
     {:noreply, Map.merge(state, info)}
   end
 
+  def set_current_quiz_id(user_id, current_quiz_id) do
+    set_state(user_id, %{current_quiz_id: current_quiz_id})
+  end
+
   def get_info_for_msg(user_id), do: call(user_id, :get_info_for_msg)
 
   defp get_info_for_msg_impl(_reply, state) do
     {:reply, {state.avatar_url, state.display_name, state.username}, state}
+  end
+
+  def get_current_quiz_id(user_id) do
+    get(user_id, :current_quiz_id)
   end
 
   def get(user_id, key), do: call(user_id, {:get, key})

@@ -134,7 +134,10 @@ export const connect = (
 
       const message = JSON.parse(e.data);
 
-      logger("in", message.op, message.d, message.fetchId, e.data);
+      // eslint-disable-next-line no-console
+      console.log(message);
+
+      logger("in", message.op, message.p, message.fetchId, e.data);
 
       if (message.op === "auth-good") {
         const connection: Connection = {

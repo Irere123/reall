@@ -17,7 +17,7 @@ defmodule Api.Auth do
     end
   end
 
-  defp do_auth(user, tokens, request, ip) do
+  defp do_auth(user, tokens, _request, ip) do
     alias Components.UserSession
 
     if user do
@@ -27,8 +27,7 @@ defmodule Api.Auth do
         user_id: user.id,
         ip: ip,
         username: user.username,
-        avatar_url: user.avatarUrl,
-        banner_url: user.bannerUrl
+        avatar_url: user.avatarUrl
       )
 
       if user.ip != ip do
@@ -43,6 +42,10 @@ defmodule Api.Auth do
       if tokens do
         UserSession.new_tokens(user.id, tokens)
       end
+
+      {:ok, user}
+    else
+      {:close, 4001, "invalid_authentication"}
     end
   end
 end
