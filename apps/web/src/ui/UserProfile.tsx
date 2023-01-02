@@ -9,7 +9,6 @@ interface UserProfileProps {
 }
 
 export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
-  console.log(user.inserted_at);
   const dt = new Date(user.inserted_at);
 
   return (

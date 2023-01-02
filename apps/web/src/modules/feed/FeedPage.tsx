@@ -16,7 +16,7 @@ export const FeedPage: PageComponent<FeedPageProps> = () => {
       <MainLayout>
         <HeaderController embed={{}} title={`Dashboard`} />
         <MiddlePanel stickyChildren={<MiddleHeader />}>
-          <div className="flex flex-col mb-3">
+          <div className="flex flex-col w-full mb-3 ml-3">
             <Card />
           </div>
         </MiddlePanel>
