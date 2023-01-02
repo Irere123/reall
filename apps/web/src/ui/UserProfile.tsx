@@ -2,14 +2,13 @@ import { User } from "@reall/client";
 import { format } from "date-fns";
 import React from "react";
 import { FormattedDate } from "./FormattedDate";
-import { SingleUser } from "./UserAvatar/UserAvatar";
+import { SingleUser } from "./UserAvatar/SingleUser";
 
 interface UserProfileProps {
   user: User;
 }
 
 export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
-  console.log(user.inserted_at);
   const dt = new Date(user.inserted_at);
 
   return (

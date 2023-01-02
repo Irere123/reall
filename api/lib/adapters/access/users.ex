@@ -19,6 +19,17 @@ defmodule Adapters.Access.Users do
     |> Repo.one()
   end
 
+  def search_username(query) do
+    search_str = query <> "%"
+
+    Query.start()
+    # here
+    |> where([u], ilike(u.username, ^search_str))
+    |> order_by([u], desc: u.numLikes)
+    |> limit([], 15)
+    |> Repo.all()
+  end
+
   def get_ip(user_id) do
     # DO NOT COPY/PASTE THIS FUNCTION
     try do

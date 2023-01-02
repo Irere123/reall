@@ -25,7 +25,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
         {prepend}
       </div>
       <div
-        className={`flex flex-col sm:m-3 items-center w-full scrollbar-thin scrollbar-thumb-primary-2 ${
+        className={`flex flex-col items-center w-full scrollbar-thin scrollbar-thumb-primary-2 ${
           prepend ? "mt-8 mb-7" : ""
         }`}
       >

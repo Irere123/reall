@@ -3,15 +3,20 @@ import Link from "next/link";
 
 import { InboxIcon, SendIcon } from "../../icons";
 import { SearchBar } from "../Search/SearchBar";
-import { SingleUser } from "../UserAvatar/UserAvatar";
+import { SingleUser } from "../UserAvatar/SingleUser";
 import { useConn } from "../../shared-hooks/useConn";
+import { useRouter } from "next/router";
 
 export const MiddleHeader = () => {
+  const { push } = useRouter();
   const { user } = useConn();
 
   return (
     <div className="flex gap-7">
-      <SearchBar placeholder="Search for people" />
+      <SearchBar
+        onClick={() => push("/search")}
+        placeholder="Search for people"
+      />
       <div className="flex gap-3 items-center">
         <Link href={`/messages`}>
           <SendIcon />
