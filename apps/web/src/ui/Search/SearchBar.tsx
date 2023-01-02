@@ -7,6 +7,7 @@ export interface SearchBarProps
   extends React.ComponentPropsWithoutRef<"input"> {
   inputClassName?: string;
   mobile?: boolean;
+  autoFocus?: boolean;
   isLoading?: boolean;
 }
 
@@ -14,6 +15,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
   className = "",
   inputClassName = "",
   isLoading = false,
+  autoFocus = false,
   mobile = false,
   ...props
 }) => {
@@ -29,7 +31,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         </div>
       )}
       <Input
-        autoFocus
+        autoFocus={autoFocus}
         data-testid="searchbar"
         className={`${inputClassName} pl-0`}
         {...props}

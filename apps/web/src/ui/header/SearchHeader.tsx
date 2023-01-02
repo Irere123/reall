@@ -32,6 +32,7 @@ export const SearchHeader: React.FC<SearchHeaderProps> = ({
         </button>
       )}
       <SearchBar
+        autoFocus={true}
         placeholder={searchPlaceholder}
         onChange={onSearchChange}
         isLoading={searchLoading}
