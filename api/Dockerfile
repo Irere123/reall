@@ -21,6 +21,10 @@ COPY lib /app/lib
 # compile app and create release
 RUN mix do compile, release
 
+# Set the environment variables from the .env file
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+
+
 ####################################################################################################
 # STEP 2 - FINAL
 FROM alpine:3.16.3 as app
@@ -38,8 +42,6 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/api ./
 
 ENV HOME=/app
 
-# Set the environment variables from the .env file
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
 
 
 CMD bin/api eval "Api.Release.migrate" && bin/api start
