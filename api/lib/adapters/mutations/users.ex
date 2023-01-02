@@ -3,7 +3,7 @@ defmodule Adapters.Mutations.Users do
 
   alias Api.Repo
   alias Api.Schemas.User
-  alias Api.Queries.Users, as: Query
+  alias Adapters.Queries.Users, as: Query
 
   def delete(user_id) do
     %User{id: user_id} |> Repo.delete()
@@ -28,6 +28,14 @@ defmodule Adapters.Mutations.Users do
     Query.start()
     |> Query.filter_by_id(user_id)
     |> Query.update_set_online_true()
+    |> Repo.update_all([])
+  end
+
+  def set_offline(user_id) do
+    Query.start()
+    |> Query.filter_by_id(user_id)
+    |> Query.update_set_online_false()
+    |> Query.update_set_last_online_to_now()
     |> Repo.update_all([])
   end
 
