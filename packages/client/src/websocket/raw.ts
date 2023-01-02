@@ -137,9 +137,9 @@ export const connect = (
       // eslint-disable-next-line no-console
       console.log(message);
 
-      logger("in", message.op, message.p, message.fetchId, e.data);
+      logger("in", message.op, message.p, message.ref, e.data);
 
-      if (message.op === "auth-good") {
+      if (message.op === "auth:request:reply") {
         const connection: Connection = {
           close: () => socket.close(),
 
@@ -150,7 +150,7 @@ export const connect = (
 
             return () => listeners.splice(listeners.indexOf(listener), 1);
           },
-          user: message.d.user,
+          user: message.p.user,
           sendCast: apiSend,
           sendCall: (
             opcode: Opcode,

@@ -19,7 +19,7 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 ReactModal.setAppElement("#__next");
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   if (
     isServer &&
     !Component.getInitialProps &&
@@ -44,3 +44,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </WebSocketProvider>
   );
 }
+
+export default App;
