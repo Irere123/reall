@@ -23,7 +23,7 @@ RUN mix do compile, release
 
 ####################################################################################################
 # STEP 2 - FINAL
-FROM hexpm/elixir:1.14.0-erlang-24.3.4.7-alpine-3.16.3 as app
+FROM alpine:3.13.2 as app
 RUN apk add --no-cache openssl ncurses-libs
 
 WORKDIR /app
@@ -35,5 +35,9 @@ USER nobody:nobody
 COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/api ./
 
 ENV HOME=/app
+
+# Set the environment variables from the .env file
+ENV $(cat .env | xargs)
+
 
 CMD bin/api eval "Api.Release.migrate" && bin/api start
