@@ -7,23 +7,11 @@ defmodule Api.Routes.FacebookAuth do
   plug(:dispatch)
 
   get "/web" do
-    state =
-      if Application.get_env(:api, :staging?) do
-        %{
-          redirect_base_url: fetch_query_params(conn).query_params["redirect_after_base"]
-        }
-        |> Jason.encode!()
-        |> Base.encode64()
-      else
-        "web"
-      end
-
-    %{conn | params: Map.put(conn.params, "state", state)}
+    conn
     |> Plug.Conn.put_private(:ueberauth_request_options, %{
-      callback_url: Application.get_env(:api, :api_url) <> "/auth/discord/callback",
+      callback_url: Application.get_env(:api, :api_url) <> "/auth/facebook/callback",
       options: [
-        default_scope: "email",
-        prompt: "none"
+        default_scope: "email,public_profile,user_friends"
       ]
     })
     |> Ueberauth.Strategy.Facebook.handle_request!()
@@ -33,7 +21,7 @@ defmodule Api.Routes.FacebookAuth do
     conn
     |> fetch_query_params()
     |> Plug.Conn.put_private(:ueberauth_request_options, %{
-      callback_url: Application.get_env(:api, :api_url) <> "/auth/discord/callback",
+      callback_url: Application.get_env(:api, :api_url) <> "/auth/facebook/callback",
       options: []
     })
     |> Ueberauth.Strategy.Facebook.handle_callback!()
@@ -65,14 +53,18 @@ defmodule Api.Routes.FacebookAuth do
       get_base_url() <>
         "/?error=" <>
         URI.encode(
-          "something went wrong, try again and if the error persists, tell ben to check the server logs"
+          "something went wrong, try again and if the error persists, tell irere to check the server logs"
         )
     )
   end
 
-  # def handle_callback(
-  #       %Plug.Conn{private: %{user: user, token: %{access_token: access_token}}} = conn
-  #     ) do
-  #   conn |> Redirect.redirect("/")
-  # end
+  def handle_callback(
+        %Plug.Conn{private: %{facebook_user: user, facebook_token: %{access_token: access_token}}} =
+          conn
+      ) do
+    IO.inspect(user)
+    IO.inspect(access_token)
+
+    conn |> Redirect.redirect("/")
+  end
 end

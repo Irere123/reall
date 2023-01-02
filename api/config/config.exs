@@ -9,7 +9,11 @@ config :ueberauth, Ueberauth,
   providers: [
     facebook:
       {Ueberauth.Strategy.Facebook,
-       [client_id: System.get_env("FACEBOOK_CLIENT_ID"), client_secret: "FACEBOOK_CLIENT_SECRET"]}
+       [
+         default_scope: "email,public_profile,user_friends",
+         display: "popup",
+         profile_fields: "name,email,first_name,last_name"
+       ]}
   ]
 
 config :plug_cowboy,

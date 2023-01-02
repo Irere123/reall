@@ -45,6 +45,10 @@ config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
         Create an oauth application on Twitter to get one
       """)
 
+config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
+  client_id: System.get_env("FACEBOOK_CLIENT_ID"),
+  client_secret: System.get_env("FACEBOOK_CLIENT_SECRET")
+
 config :extwitter, :oauth,
   consumer_key:
     System.get_env("TWITTER_API_KEY") ||
