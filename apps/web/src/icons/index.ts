@@ -12,3 +12,5 @@ export { default as SettingsIcon } from "./SettingsIcon";
 export { default as BugIcon } from "./BugIcon";
 export { default as ThreeDotsIcon } from "./ThreeDotsIcon";
 export { default as HeartIcon } from "./HeartIcon";
+export { default as SmileyIcon } from "./SmileyIcon";
+export { default as PlusIcon } from "./PlusIcon";
