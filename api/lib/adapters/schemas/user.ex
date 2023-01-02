@@ -1,6 +1,8 @@
 defmodule Api.Schemas.User do
   use Ecto.Schema
 
+  # the struct defined here can also be pushed to the user
+  use Api.Message.Push
   import Ecto.Changeset
 
   @timestamps_opts [type: :utc_datetime_usec]

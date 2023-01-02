@@ -4,8 +4,8 @@ import { v4 as generateUuid } from "uuid";
 import { User, UUID } from "..";
 
 const heartbeatInterval = 8000;
-// const apiUrl = "wss://api-reall.onrender.app/socket";
-const apiUrl = "ws://localhost:4000/socket";
+const apiUrl = "wss://api-reall.onrender.app/socket";
+// const apiUrl = "ws://localhost:4000/socket";
 const connectionTimeout = 15000;
 
 export type Token = string;
@@ -95,7 +95,7 @@ export const connect = (
       // and you get logged out
       if (socket.readyState !== socket.OPEN) return;
 
-      const raw = `{"v":"0.2.0", "op":"${opcode}","p":${JSON.stringify(data)}${
+      const raw = `{"v":"0.1.0", "op":"${opcode}","p":${JSON.stringify(data)}${
         ref ? `,"ref":"${ref}"` : ""
       }}`;
 
@@ -209,10 +209,14 @@ export const connect = (
         }
       }, heartbeatInterval);
 
-      apiSend("auth:request", {
-        accessToken: token,
-        refreshToken,
-        ...getAuthOptions?.(),
-      });
+      apiSend(
+        "auth:request",
+        {
+          accessToken: token,
+          refreshToken,
+          ...getAuthOptions?.(),
+        },
+        generateUuid()
+      );
     });
   });

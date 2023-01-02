@@ -21,7 +21,6 @@ defmodule Api.Utils.TokenUtils do
         user = Api.Repo.get(User, refreshClaims["userId"])
 
         if user &&
-             !user.reasonForBan &&
              user.tokenVersion == refreshClaims["tokenVersion"] do
           {:new_tokens, user.id, create_tokens(user), user}
         end

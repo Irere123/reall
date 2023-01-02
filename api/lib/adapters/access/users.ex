@@ -3,6 +3,7 @@ defmodule Adapters.Access.Users do
 
   alias Adapters.Queries.Users, as: Query
   alias Api.Repo
+  alias Api.Schemas.User
 
   def get(user_id) do
     Repo.get(User, user_id)

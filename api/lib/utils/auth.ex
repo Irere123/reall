@@ -28,12 +28,7 @@ defmodule Api.Auth do
         ip: ip,
         username: user.username,
         avatar_url: user.avatarUrl,
-        banner_url: user.bannerUrl,
-        display_name: user.displayName,
-        current_room_id: user.currentRoomId,
-        muted: request.muted,
-        deafened: request.deafened,
-        bot_owner_id: user.botOwnerId
+        banner_url: user.bannerUrl
       )
 
       if user.ip != ip do
