@@ -24,7 +24,9 @@ RUN mix do compile, release
 ####################################################################################################
 # STEP 2 - FINAL
 FROM alpine:3.13.2 as app
-RUN apk add --no-cache openssl ncurses-libs
+
+RUN apk add --no-cache openssl ncurses-libs && \
+    apk add --no-cache libstdc++ libgcc
 
 WORKDIR /app
 
