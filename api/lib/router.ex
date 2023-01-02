@@ -2,6 +2,7 @@ defmodule Api.Router do
   import Plug.Conn
 
   alias Api.Routes.Stats
+  alias Api.Routes.User
   alias Api.Routes.FacebookAuth
   alias Api.Routes.TwitterAuth
   alias Api.Routes.DevOnly
@@ -17,6 +18,7 @@ defmodule Api.Router do
 
   forward("/dev", to: DevOnly)
   forward("/stats", to: Stats)
+  forward("/user", to: User)
   forward("/auth/facebook", to: FacebookAuth)
   forward("/auth/twitter", to: TwitterAuth)
 

@@ -6,7 +6,9 @@ defmodule Api.Schemas.User do
   import Ecto.Changeset
 
   @timestamps_opts [type: :utc_datetime_usec]
-  @derive {Jason.Encoder, only: ~w( id username avatarUrl bio goal gender online lastOnline schoolName age)a}
+  @derive {Jason.Encoder, only: ~w(id username avatarUrl bio goal gender online
+           lastOnline schoolName age bannerUrl staff contributions numLikes
+          )a}
   @primary_key {:id, :binary_id, []}
   schema "users" do
     field(:username, :string)
