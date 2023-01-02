@@ -2,15 +2,7 @@
 FROM hexpm/elixir:1.14.0-erlang-24.3.4.7-alpine-3.16.3 AS build
 
 # Update the package manager and install dependencies
-RUN apk update && \
-    apk upgrade --no-cache && \
-    apk add --no-cache \
-    git \
-    build-base \
-    nodejs-current \
-    nodejs-npm \
-    python3 && \
-    mix local.rebar --force && \
+RUN mix local.rebar --force && \
     mix local.hex --force
 
 ENV MIX_ENV=prod
