@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { InboxIcon, SendIcon } from "../../icons";
 import { SearchBar } from "../Search/SearchBar";
-import { SingleUser } from "../UserAvatar/UserAvatar";
+import { SingleUser } from "../UserAvatar/SingleUser";
 import { useConn } from "../../shared-hooks/useConn";
 
 export const MiddleHeader = () => {

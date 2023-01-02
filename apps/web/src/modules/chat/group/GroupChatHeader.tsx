@@ -3,7 +3,7 @@ import React from "react";
 import { PlusIcon } from "../../../icons";
 import { useConn } from "../../../shared-hooks/useConn";
 import { FormattedDate } from "../../../ui/FormattedDate";
-import { SingleUser } from "../../../ui/UserAvatar/UserAvatar";
+import { SingleUser } from "../../../ui/UserAvatar/SingleUser";
 
 export const GroupChatHeader: React.FC = () => {
   const { user } = useConn();

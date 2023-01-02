@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { SingleUser } from "../../ui/UserAvatar/UserAvatar";
+import { SingleUser } from "../../ui/UserAvatar/SingleUser";
 
 const ChatUser: React.FC<{
   user: { avatarUrl: string; username: string; isOnline: boolean };

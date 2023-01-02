@@ -2,7 +2,7 @@ import React from "react";
 import { ThreeDotsIcon } from "../../icons";
 import { Button } from "../Button";
 
-import { SingleUser } from "../UserAvatar/UserAvatar";
+import { SingleUser } from "../UserAvatar/SingleUser";
 
 export interface CardHeaderProps {
   username: string;

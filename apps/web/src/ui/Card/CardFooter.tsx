@@ -1,7 +1,7 @@
 import React from "react";
 import { PeopleIcon, SendIcon, ThreeDotsIcon } from "../../icons";
 
-import { SingleUser } from "../UserAvatar/UserAvatar";
+import { SingleUser } from "../UserAvatar/SingleUser";
 
 export interface CardFooterProps {}
 
