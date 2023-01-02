@@ -1,5 +1,5 @@
 # STEP 1 - BUILD RELEASE 
-FROM hexpm/elixir:1.14.0-alpine AS build
+FROM elixir:1.14.0-alpine AS build
 
 # Install build dependencies
 RUN apk update && \
