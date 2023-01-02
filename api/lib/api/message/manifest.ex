@@ -1,6 +1,9 @@
 defmodule Api.Message.Manifest do
+  alias Api.Message.Auth
+
   @actions %{
-    "test:operator" => BrothTest.MessageTest.TestOperator
+    "test:operator" => BrothTest.MessageTest.TestOperator,
+    "auth:request" => Auth.Request
   }
 
   # verify that all of the actions are accounted for in the

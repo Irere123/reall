@@ -17,4 +17,17 @@ defmodule Adapters.Access.Users do
     |> Query.filter_by_username(username)
     |> Repo.one()
   end
+
+  def get_ip(user_id) do
+    # DO NOT COPY/PASTE THIS FUNCTION
+    try do
+      Components.UserSession.get(user_id, :ip)
+    catch
+      _, _ ->
+        case get_by_id(user_id) do
+          nil -> nil
+          %{ip: ip} -> ip
+        end
+    end
+  end
 end

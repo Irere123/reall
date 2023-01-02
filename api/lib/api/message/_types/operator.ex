@@ -1,5 +1,7 @@
 import EctoEnum
 
+alias Api.Message.Auth
+
 defenum(
   Api.Message.Types.Operator,
   [
@@ -10,7 +12,7 @@ defenum(
     # chat commands and casts: 128..191
 
     # auth and maintenance commands 192..254
-
+    {Auth.Request, 193},
     # etc 255 - 317
     {BrothTest.MessageTest.TestOperator, 255}
   ]
