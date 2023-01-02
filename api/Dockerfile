@@ -23,10 +23,16 @@ RUN mix do compile, release
 
 ####################################################################################################
 # STEP 2 - FINAL
+FROM elixir:1.14.0-alpine as app
+RUN apk add --no-cache openssl ncurses-libs
 
 WORKDIR /app
 
-COPY --from=build /app/_build/prod/rel/api/api ./
+RUN chown nobody:nobody /app
+
+USER nobody:nobody
+
+COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/api/api ./
 
 ENV HOME=/app
 
