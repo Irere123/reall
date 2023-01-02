@@ -23,7 +23,7 @@ RUN mix do compile, release
 
 ####################################################################################################
 # STEP 2 - FINAL
-FROM 1.14.0-alpine as app
+FROM elixir:1.14.0-alpine as app
 RUN apk add --no-cache openssl ncurses-libs
 
 WORKDIR /app
