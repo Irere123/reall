@@ -44,4 +44,17 @@ defmodule Api.Schemas.User do
     |> cast(attrs, ~w(username githubId avatarUrl bannerUrl)a)
     |> validate_required([:username, :githubId, :avatarUrl, :bannerUrl])
   end
+
+  defimpl Jason.Encoder do
+    @fields ~w(id username avatarUrl bio goal gender online
+    lastOnline schoolName age bannerUrl staff contributions numLikes
+    inserted_at updated_at
+   )a
+
+    def encode(user, opts) do
+      user
+      |> Map.take(@fields)
+      |> Jason.Encoder.encode(opts)
+    end
+  end
 end

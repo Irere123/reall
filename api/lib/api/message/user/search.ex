@@ -29,7 +29,7 @@ defmodule Api.Message.User.Search do
     @primary_key false
     embedded_schema do
       # the types of this is User.
-      # currently not enforced, but once we have real DisplayRoom and
+      # currently not enforced, but once we have real
       # DisplayUser schemas we'll make sure Search.search outputs those.
       field(:items, {:array, :map})
       embeds_many(:users, Api.Schemas.User)
@@ -44,9 +44,8 @@ defmodule Api.Message.User.Search do
     case apply_action(changeset, :validate) do
       {:ok, %{query: query}} ->
         users = Users.search_username(query)
-        items = Enum.concat(users)
 
-        {:reply, %Reply{items: items, users: users, nextCursor: nil}, state}
+        {:reply, %Reply{items: users, users: users, nextCursor: nil}, state}
 
       error ->
         error
