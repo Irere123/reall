@@ -2,16 +2,8 @@
 FROM elixir:1.14.0-alpine AS build
 
 # Install build dependencies
-RUN apk update && \
-    apk upgrade --no-cache && \
-    apk add --no-cache \
-    git \
-    build-base \
-    nodejs-current \
-    nodejs-npm \ 
-    python3 && \ 
-    mix local.rebar --force && \
-    mix local.hex --force
+RUN mix local.hex --force && \
+    mix local.rebar --force
 
 ENV MIX_ENV=prod
 WORKDIR /app
@@ -31,7 +23,7 @@ RUN mix do compile, release
 
 ####################################################################################################
 # STEP 2 - FINAL
-FROM alpine:3.13.2 as app
+FROM 1.14.0-alpine as app
 RUN apk add --no-cache openssl ncurses-libs
 
 WORKDIR /app
