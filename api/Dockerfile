@@ -39,7 +39,7 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/api ./
 ENV HOME=/app
 
 # Set the environment variables from the .env file
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+RUN sudo --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
 
 
 CMD bin/api eval "Api.Release.migrate" && bin/api start
