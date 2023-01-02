@@ -31,7 +31,7 @@ RUN mix do compile, release
 
 ####################################################################################################
 # STEP 2 - FINAL
-FROM alpine-3.16.3 as app
+FROM hexpm/elixir:1.14.0-erlang-24.3.4.7-alpine-3.16.3 as app
 RUN apk add --no-cache openssl ncurses-libs
 
 WORKDIR /app
