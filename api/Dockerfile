@@ -39,7 +39,7 @@ COPY --from=build --chown=nobody:nobody /app/_build/prod/rel/api ./
 ENV HOME=/app
 
 # Set the environment variables from the .env file
-ENV $(cat .env | xargs)
+ENV $(cat /etc/secrets/.env | xargs)
 
 
 CMD bin/api eval "Api.Release.migrate" && bin/api start
