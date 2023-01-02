@@ -8,6 +8,7 @@ defenum(
   [
     # user commands and casts: 0..63
     {User.GetInfo, 1},
+    {User.Search, 2},
 
     # room commands and casts: 64..127
 

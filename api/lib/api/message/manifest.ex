@@ -5,7 +5,8 @@ defmodule Api.Message.Manifest do
   @actions %{
     "test:operator" => BrothTest.MessageTest.TestOperator,
     "auth:request" => Auth.Request,
-    "user:get_info" => User.GetInfo
+    "user:get_info" => User.GetInfo,
+    "user:search" => User.Search
   }
 
   # verify that all of the actions are accounted for in the
