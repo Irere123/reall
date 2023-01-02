@@ -10,3 +10,4 @@ export { default as SendIcon } from "./SendIcon";
 export { default as InboxIcon } from "./InboxIcon";
 export { default as SettingsIcon } from "./SettingsIcon";
 export { default as BugIcon } from "./BugIcon";
+export { default as ThreeDotsIcon } from "./ThreeDotsIcon";

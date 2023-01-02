@@ -1,4 +1,6 @@
 import React from "react";
+import { ThreeDotsIcon } from "../../icons";
+import { Button } from "../Button";
 
 import { SingleUser } from "../UserAvatar/UserAvatar";
 
@@ -15,11 +17,14 @@ export const CardHeader: React.FC<CardHeaderProps> = ({
   username,
 }) => {
   return (
-    <div>
-      <div>
+    <div className="flex w-full p-3">
+      <div className="flex flex-1 items-center gap-3">
         <SingleUser src={avatarUrl} size="sm" isOnline={isOnline} />
-        <p>{username}</p>
+        <p className="text-secondary-2">{username}</p>
       </div>
+      <button>
+        <ThreeDotsIcon />
+      </button>
     </div>
   );
 };
