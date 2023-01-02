@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   BugIcon,
   FacebookIcon,
@@ -10,6 +10,7 @@ import {
 import { apiUrl, loginNextPathKey, __prod__ } from "../../lib/constants";
 import { Button } from "../../ui/Button";
 import { HeaderController } from "../display/HeaderController";
+import { WebSocketContext } from "../ws/WebSocketProvider";
 import { useSaveTokensFromQueryParams } from "./useSaveTokensFromQueryParams";
 import { useTokenStore } from "./useTokenStore";
 
@@ -61,8 +62,15 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 export const LoginPage: React.FC = () => {
   useSaveTokensFromQueryParams();
   const { push } = useRouter();
+  const { setConn } = useContext(WebSocketContext);
   const [tokensChecked, setTokensChecked] = useState(false);
   const hasTokens = useTokenStore((s) => !!(s.accessToken && s.refreshToken));
+
+  useEffect(() => {
+    // only want this on mount
+    setConn(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (hasTokens) {

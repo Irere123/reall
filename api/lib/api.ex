@@ -3,6 +3,8 @@ defmodule Api do
 
   def start(_type, _args) do
     children = [
+      Components.Supervisors.UserSession,
+      Components.StatsCache,
       {Api.Repo, []},
       {Plug.Cowboy,
        scheme: :http,

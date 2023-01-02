@@ -28,7 +28,8 @@
     "react-query": "^3.39.2",
     "use-debounce": "^9.0.2",
     "uuid": "^9.0.0",
-    "zustand": "^4.1.5"
+    "zustand": "^4.1.5",
+    "@reall/client": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

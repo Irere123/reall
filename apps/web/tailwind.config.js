@@ -17,7 +17,6 @@ module.exports = {
     },
     colors: {
       button: "var(--color-button-text)",
-      textBold: "var(--color-text-bold)",
       transparent: "transparent",
       primary: {
         1: "var(--color-primary-1)",
@@ -29,6 +28,7 @@ module.exports = {
       },
       accent: {
         DEFAULT: "var(--color-accent)",
+        secondary: "var(--color-accent-secondary)",
         hover: "var(--color-accent-hover)",
         disabled: "var(--color-accent-disabled)",
       },
