@@ -7,7 +7,7 @@ export const Sidebar: React.FC = () => {
   return (
     <div className="flex items-center flex-col">
       <Link href={`/feed`}>
-        <Logo />
+        <Logo width={45} height={45} />
       </Link>
       <div className="flex flex-col items-center justify-center gap-3 pt-7 w-full">
         <Link href={`/feed`}>
