@@ -32,7 +32,7 @@ export const wrap = (connection: Connection) => ({
     ): Promise<{
       items: Array<User>;
       users: User[];
-    }> => connection.sendCall("search", { query }),
+    }> => connection.sendCall("user:search", { query }),
     getUserProfile: (userIdOrUsername): Promise<User | { error: string }> =>
       connection.sendCall("user:get_info", { userIdOrUsername }),
   },

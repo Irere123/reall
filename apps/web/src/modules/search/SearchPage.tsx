@@ -23,7 +23,14 @@ export const SearchPage: PageComponent<SearchPageProps> = () => {
         <MiddlePanel
           stickyChildren={
             <SearchHeader
-              onSearchChange={() => {}}
+              onSearchChange={(e) => {
+                console.log(e.target.value);
+                setSearchLoading(true);
+                conn.query.search(e.target.value).then((r) => {
+                  setResults(r?.items);
+                  setSearchLoading(false);
+                });
+              }}
               searchLoading={searchLoading}
               searchPlaceholder={"Search for people"}
               onBackClick={() => router.back()}
@@ -51,3 +58,5 @@ export const SearchPage: PageComponent<SearchPageProps> = () => {
     </WaitForWsAndAuth>
   );
 };
+
+SearchPage.ws = true;
