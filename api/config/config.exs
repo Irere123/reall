@@ -16,6 +16,11 @@ config :ueberauth, Ueberauth,
        ]}
   ]
 
+config :api, Facebook,
+  client_id: System.get_env("FACEBOOK_CLIENT_ID"),
+  client_secret: System.get_env("FACEBOOK_CLIENT_SECRET"),
+  redirect_uri: "http://localhost:4000/auth/facebook/callback"
+
 config :plug_cowboy,
   log_exceptions_with_status_code: [400..599]
 

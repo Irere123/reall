@@ -36,6 +36,7 @@ defmodule Api.MixProject do
       {:jason, "~> 1.4"},
       {:joken, "~> 2.0"},
       {:httpoison, "~> 1.8"},
+      {:oauth2, "~> 2.0"},
       {:postgrex, "~> 0.16.5"},
       {:remix, "~> 0.0.2", only: :dev},
       {:ueberauth, "~> 0.10.3"},
