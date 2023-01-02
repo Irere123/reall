@@ -1,16 +1,19 @@
 {
-  "name": "client",
+  "name": "@reall/client",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "license": "MIT",
+  "keywords": [
+    "reall"
+  ],
+  "description": "The official Reall API client.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "eslint src/"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Irere Emmy",
   "dependencies": {
     "isomorphic-unfetch": "^4.0.1",
     "isomorphic-ws": "^5.0.0",
