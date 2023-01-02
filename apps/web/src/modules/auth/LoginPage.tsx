@@ -97,10 +97,15 @@ export const LoginPage: React.FC = () => {
           <h3 className="text-secondary-1">Login</h3>
         </div>
         <div className="flex flex-col gap-2">
-          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/facebook/web`}>
-            <FacebookIcon width={20} height={20} />
-            Continue with Facebook
-          </LoginButton>
+          {!__prod__ && (
+            <LoginButton
+              color="primary"
+              oauthUrl={`${apiUrl}/auth/facebook/web`}
+            >
+              <FacebookIcon width={20} height={20} />
+              Continue with Facebook
+            </LoginButton>
+          )}
           <LoginButton oauthUrl={`${apiUrl}/auth/twitter/web`}>
             <TwitterIcon width={20} height={20} />
             Continue with Twitter
