@@ -24,12 +24,12 @@ p.bold {
   font-size: 14px;
 
   --color-button-text: #fff;
-  --color-text-bold: #58A6FF;
   --color-primary-1: #0D1117;
   --color-primary-2: #161B22;
   --color-secondary-1: #C9D1D9;
   --color-secondary-2: #E2F6FC;
   --color-accent: #fd4d4d;
+  --color-accent-secondary: #58A6FF;
   --color-accent-hover: #fd6868;
   --color-accent-disabled: #f5bfbf;
   --screen-height-reduction: 0px;
@@ -100,6 +100,26 @@ html {
 
 ::-webkit-resizer {
   background: var(--color-primary-2);
+}
+
+
+#nprogress {
+  position: relative;
+  z-index: 9999999;
+}
+
+#nprogress .bar {
+  background: var(--color-accent-secondary) !important;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px var(--color-accent-secondary),
+    0 0 5px var(--color-accent-secondary) !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--color-accent-secondary) !important;
+  border-left-color: var(--color-accent-secondary) !important;
 }
 
 

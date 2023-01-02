@@ -8,6 +8,7 @@ defmodule Api.Schemas.User do
   @timestamps_opts [type: :utc_datetime_usec]
   @derive {Jason.Encoder, only: ~w(id username avatarUrl bio goal gender online
            lastOnline schoolName age bannerUrl staff contributions numLikes
+           inserted_at updated_at
           )a}
   @primary_key {:id, :binary_id, []}
   schema "users" do

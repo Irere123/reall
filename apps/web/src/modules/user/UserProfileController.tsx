@@ -4,7 +4,7 @@ import { isServer } from "../../lib/isServer";
 import { useTypeSafeQuery } from "../../shared-hooks/useTypeSafeQuery";
 import { CenterLoader } from "../../ui/CenterLoader";
 import { InfoText } from "../../ui/InfoText";
-import { SingleUser } from "../../ui/UserAvatar/UserAvatar";
+import { UserProfile } from "../../ui/UserProfile";
 
 export const UserProfileController = () => {
   const { query: params } = useRouter();
@@ -29,8 +29,8 @@ export const UserProfileController = () => {
   }
 
   return (
-    <div>
-      <SingleUser src={data.avatarUrl} size="lg" isOnline={data.online} />
-    </div>
+    <>
+      <UserProfile user={data} />
+    </>
   );
 };

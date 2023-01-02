@@ -13,7 +13,7 @@ const sizeClassnames = {
 
 const colorClassnames = {
   primary: "text-button bg-primary-2 transition duration-200 ease-in-out",
-  secondary: "text-button bg-textBold disabled:text-primary-300",
+  secondary: "text-button bg-accent-secondary disabled:text-primary-300",
   accent:
     "text-button bg-accent hover:bg-accent-hover disabled:bg-accent-disabled disabled:text-primary-300",
   transparent: "text-button bg-transparent",
