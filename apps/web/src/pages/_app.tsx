@@ -10,6 +10,8 @@ import "nprogress/nprogress.css";
 import { WebSocketProvider } from "../modules/ws/WebSocketProvider";
 import { PageComponent } from "../types/PageComponent";
 import { isServer } from "../lib/isServer";
+import { QueryClientProvider } from "react-query";
+import { queryClient } from "../lib/queryClient";
 
 Router.events.on("routeChangeStart", () => {
   NProgress.start();
@@ -32,15 +34,17 @@ function App({ Component, pageProps }: AppProps) {
     <WebSocketProvider
       shouldConnect={!!(Component as PageComponent<unknown>).ws}
     >
-      <Head>
-        <link rel="icon" href="/reall_logo.svg" type="image/svg" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
-        />
-      </Head>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Head>
+          <link rel="icon" href="/reall_logo.svg" type="image/svg" />
+          <link rel="manifest" href="/manifest.json" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
+          />
+        </Head>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </WebSocketProvider>
   );
 }

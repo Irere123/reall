@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck because internet is unpredictable
 
+import { User } from "..";
 import { Connection } from "./raw";
 
 /**
@@ -25,7 +26,10 @@ export const wrap = (connection: Connection) => ({
    * Allows you to call functions that return information about the ws state
    */
 
-  query: {},
+  query: {
+    getUserProfile: (userIdOrUsername): Promise<User | { error: string }> =>
+      connection.sendCall("user:get_info", { userIdOrUsername }),
+  },
 
   /**
    * Allows you to call functions that mutate the ws state
