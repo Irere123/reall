@@ -5,7 +5,9 @@ import { useWrappedConn } from "../../shared-hooks/useConn";
 import { PageComponent } from "../../types/PageComponent";
 import { SearchHeader } from "../../ui/header/SearchHeader";
 import { InfoText } from "../../ui/InfoText";
+import { UserSearchResult } from "../../ui/Search/SearchResult";
 import { WaitForWsAndAuth } from "../auth/WaitForWsAndAuth";
+import { HeaderController } from "../display/HeaderController";
 import { MiddlePanel } from "../layouts/GridPanels";
 import { MainLayout } from "../layouts/MainLayout";
 
@@ -19,6 +21,7 @@ export const SearchPage: PageComponent<SearchPageProps> = () => {
 
   return (
     <WaitForWsAndAuth>
+      <HeaderController embed={{}} title={"Search"} />
       <MainLayout>
         <MiddlePanel
           stickyChildren={
@@ -39,18 +42,22 @@ export const SearchPage: PageComponent<SearchPageProps> = () => {
         >
           <div className="h-full w-full">
             {results &&
-              results.map((userOrRoom, i) => {
-                if ("username" in userOrRoom) {
+              results.map((user, i) => {
+                if ("username" in user) {
                   return (
-                    <div
-                      onClick={() => router.push(`/u/${userOrRoom.username}`)}
+                    <UserSearchResult
+                      user={user}
+                      className="mb-3"
+                      onClick={() => router.push(`/u/${user.username}`)}
                       key={i}
                     />
                   );
                 }
               })}
             {!results?.length && (
-              <InfoText className="pr-4 pl-5 py-3">no results</InfoText>
+              <InfoText className="pr-4 pl-5 py-3">
+                There no results found
+              </InfoText>
             )}
           </div>
         </MiddlePanel>
