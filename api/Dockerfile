@@ -1,6 +1,10 @@
 # STEP 1 - BUILD RELEASE 
 FROM hexpm/elixir:1.14.0-erlang-24.3.4.7-alpine-3.16.3 AS build
 
+# Set the environment variables from the .env file
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
+
+
 # Update the package manager and install dependencies
 RUN mix local.rebar --force && \
     mix local.hex --force
@@ -20,9 +24,6 @@ COPY lib /app/lib
 
 # compile app and create release
 RUN mix do compile, release
-
-# Set the environment variables from the .env file
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat /etc/secrets/.env
 
 
 ####################################################################################################
