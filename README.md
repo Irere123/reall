@@ -1,8 +1,6 @@
-<a href="https://reall.vercel.app">
+<a href="https://bereall.netlify.app">
 <p align="center">
-<img height=100 src="https://raw.githubusercontent.com/Irere123/reall/prod/assets/reall_logo.svg
-"/>
-
+<img height=100 src="/assets/reall_logo.svg"/>
 </p></a>
 <p align="center">
   <strong>Taking communication to the moon 🚀</strong>
