@@ -1,5 +1,6 @@
 defmodule Adapters.Access.Users do
   import Ecto.Query, warn: false
+  @fetch_limit 16
 
   alias Adapters.Queries.Users, as: Query
   alias Api.Repo
@@ -17,6 +18,19 @@ defmodule Adapters.Access.Users do
     Query.start()
     |> Query.filter_by_username(username)
     |> Repo.one()
+  end
+
+  def get_top_users(offset \\ 0) do
+    items =
+      from(u in User,
+        order_by: [desc: u.numLikes],
+        offset: ^offset,
+        limit: ^@fetch_limit
+      )
+      |> Repo.all()
+
+    {Enum.slice(items, 0, -1 + @fetch_limit),
+     if(length(items) == @fetch_limit, do: -1 + offset + @fetch_limit, else: nil)}
   end
 
   def search_username(query) do
