@@ -42,5 +42,8 @@ export const wrap = (connection: Connection) => ({
   /**
    * Allows you to call functions that mutate the ws state
    */
-  mutation: {},
+  mutation: {
+    viewProfile: (targetId: string, status = "liked"): Promise<unknown> =>
+      connection.sendCast("feed:view", { status, targetId }),
+  },
 });
