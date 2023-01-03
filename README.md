@@ -1,6 +1,6 @@
 <a href="https://bereall.netlify.app">
 <p align="center">
-<img height=100 src="/assets/reall_logo.svg"/>
+<img height=100 src="/.assets/reall_logo.svg"/>
 </p></a>
 <p align="center">
   <strong>Taking communication to the moon 🚀</strong>
@@ -8,15 +8,11 @@
 
 ## What's inside?
 
-## Structure
-
-| Codebase                                                 |    Description     |
-| :------------------------------------------------------- | :----------------: |
-| [api](api)                                               |     Elixir API     |
-| [apps/web](apps/web)                                     |  Next.js frontend  |
-| [packages/client](packages/client)                       | Node.js API Client |
-| [packages/ts-config](packages/tsconfig/)                 | Global TS Configs  |
-| [packages/eslint-config](packages/eslint-config-custom/) |   ES Lint Config   |
+| Codebase             |    Description     |
+| :------------------- | :----------------: |
+| [api](api)           |     Elixir API     |
+| [apps/web](apps/web) |  Next.js frontend  |
+| [packages](packages) | Workspace packages |
 
 ## Branches
 
@@ -56,6 +52,5 @@ yarn run build
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
 yarn run dev
 ```
