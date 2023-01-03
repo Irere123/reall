@@ -19,6 +19,7 @@ defmodule Adapters.Users do
   # function and retrieve the data either from the fields or with a preload.
   defdelegate get_by_id(user_id), to: Adapters.Access.Users
   defdelegate get_by_username(username), to: Adapters.Access.Users
+  defdelegate get_top_users(user_id, offset \\ 0), to: Adapters.Access.Users
   defdelegate search_username(query), to: Adapters.Access.Users
 
   defdelegate get_ip(user_id), to: Adapters.Access.Users
@@ -28,6 +29,7 @@ defmodule Adapters.Users do
   # MUTATIONS
 
   defdelegate delete(user_id), to: Adapters.Mutations.Users
+  defdelegate like_profile(user_id, target_id, liked), to: Adapters.Mutations.Users
   defdelegate bulk_insert(users), to: Adapters.Mutations.Users
   defdelegate set_online(user_id), to: Adapters.Mutations.Users
   defdelegate set_offline(user_id), to: Adapters.Mutations.Users

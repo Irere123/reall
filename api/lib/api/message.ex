@@ -10,7 +10,7 @@ defmodule Api.Message do
     field(:payload, :map)
     field(:reference, :binary_id)
     field(:inbound_operator, :string)
-    field(:version, Api.Utils.Version)
+    field(:version, Utils.Version)
     # reply messages only
     field(:errors, :map)
   end
@@ -106,7 +106,7 @@ defmodule Api.Message do
         put_change(changeset, :payload, inner_changeset)
 
       inner_changeset = %{valid?: false} ->
-        errors = Api.Utils.Errors.changeset_errors(inner_changeset)
+        errors = Utils.Errors.changeset_errors(inner_changeset)
         put_change(changeset, :errors, errors)
     end
   end

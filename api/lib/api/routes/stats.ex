@@ -10,8 +10,8 @@ defmodule Api.Routes.Stats do
   plug(:dispatch)
 
   alias Components.StatsCache
-  alias Api.Repo
-  alias Api.Schemas.User
+  alias Adapters.Repo
+  alias Schemas.User
 
   defp getStats do
     yesterday = Timex.now() |> Timex.shift(days: -1)

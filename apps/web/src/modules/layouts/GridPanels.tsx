@@ -13,7 +13,7 @@ export const MiddlePanel: React.FC<
       <div
         className={
           !!stickyChildren
-            ? `flex sticky w-full flex-col z-10 bg-primary-1 mb-6 pt-3`
+            ? `flex sticky w-full flex-col z-10 top-0 bg-primary-1 mb-6 pt-3`
             : ""
         }
       >

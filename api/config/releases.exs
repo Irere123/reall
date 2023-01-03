@@ -7,7 +7,7 @@ database_url =
     For example: ecto://USER:PASS@HOST/DATABASE
     """
 
-config :api, Api.Repo, url: database_url
+config :api, Adapters.Repo, url: database_url
 
 config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: System.get_env("FACEBOOK_CLIENT_ID"),

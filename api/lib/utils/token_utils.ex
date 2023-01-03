@@ -1,10 +1,10 @@
-defmodule Api.Utils.TokenUtils do
-  alias Api.Schemas.User
+defmodule Utils.TokenUtils do
+  alias Schemas.User
 
   def tokens_to_user_id(access_token!, refresh_token) do
     access_token! = access_token! || ""
 
-    case Api.AccessToken.verify_and_validate(access_token!) do
+    case Utils.AccessToken.verify_and_validate(access_token!) do
       {:ok, claims} ->
         {:existing_claim, claims["userId"]}
 
@@ -16,9 +16,9 @@ defmodule Api.Utils.TokenUtils do
   defp verify_refresh_token(refresh_token!) do
     refresh_token! = refresh_token! || ""
 
-    case Api.RefreshToken.verify_and_validate(refresh_token!) do
+    case Utils.RefreshToken.verify_and_validate(refresh_token!) do
       {:ok, refreshClaims} ->
-        user = Api.Repo.get(User, refreshClaims["userId"])
+        user = Adapters.Repo.get(User, refreshClaims["userId"])
 
         if user &&
              user.tokenVersion == refreshClaims["tokenVersion"] do
@@ -32,9 +32,9 @@ defmodule Api.Utils.TokenUtils do
 
   def create_tokens(user) do
     %{
-      accessToken: Api.AccessToken.generate_and_sign!(%{"userId" => user.id}),
+      accessToken: Utils.AccessToken.generate_and_sign!(%{"userId" => user.id}),
       refreshToken:
-        Api.RefreshToken.generate_and_sign!(%{
+        Utils.RefreshToken.generate_and_sign!(%{
           "userId" => user.id,
           "tokenVersion" => user.tokenVersion
         })

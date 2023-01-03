@@ -6,7 +6,7 @@ database_url =
   System.get_env("DATABASE_URL") ||
     "postgres://postgres:postgres@localhost/reall_repo"
 
-config :api, Api.Repo, url: database_url
+config :api, Adapters.Repo, url: database_url
 
 config :api,
   web_url: System.get_env("WEB_URL") || "http://localhost:3000",

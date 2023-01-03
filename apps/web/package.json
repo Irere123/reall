@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reall/client": "*",
     "date-fns": "^2.29.3",
     "downshift": "^7.0.5",
     "formik": "^2.2.9",
+    "framer-motion": "^8.1.4",
     "i18next": "^22.4.6",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
@@ -28,8 +30,7 @@
     "react-query": "^3.39.2",
     "use-debounce": "^9.0.2",
     "uuid": "^9.0.0",
-    "zustand": "^4.1.5",
-    "@reall/client": "*"
+    "zustand": "^4.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

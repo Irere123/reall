@@ -32,7 +32,7 @@ defmodule Api.Message.User.Search do
       # currently not enforced, but once we have real
       # DisplayUser schemas we'll make sure Search.search outputs those.
       field(:items, {:array, :map})
-      embeds_many(:users, Api.Schemas.User)
+      embeds_many(:users, Schemas.User)
       field(:nextCursor, :integer)
     end
   end

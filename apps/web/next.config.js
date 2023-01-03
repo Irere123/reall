@@ -6,6 +6,10 @@ module.exports = {
         protocol: 'https',
         hostname: 'placekitten.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'pbs.twimg.com',
+      },
     ],
   },
 };

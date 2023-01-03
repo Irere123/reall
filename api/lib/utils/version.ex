@@ -1,4 +1,4 @@
-defmodule Api.Utils.Version do
+defmodule Utils.Version do
   use Ecto.Type
 
   def type, do: :string

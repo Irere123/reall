@@ -1,5 +1,6 @@
-export type CreateBotResponse = {
-  apiKey: string | null;
-  isUsernameTaken: boolean | null;
-  error: string | null;
+import { User } from "..";
+
+export type GetTopUserProfilesResponse = {
+  profiles: User[];
+  nextCursor: number | null;
 };

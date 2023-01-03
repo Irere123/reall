@@ -1,4 +1,4 @@
-defmodule Api.RefreshToken do
+defmodule Utils.RefreshToken do
   def __default_signer__,
     do: Joken.Signer.create("HS256", Application.fetch_env!(:api, :refresh_token_secret))
 

@@ -1,4 +1,4 @@
-defmodule Api.Repo.Migrations.UserModel do
+defmodule Adapters.Repo.Migrations.UserModel do
   use Ecto.Migration
 
   def change do

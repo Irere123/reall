@@ -1,9 +1,32 @@
 defmodule Adapters.Mutations.Users do
   import Ecto.Query, warn: false
 
-  alias Api.Repo
-  alias Api.Schemas.User
+  alias Adapters.Repo
+  alias Schemas.User
+  alias Schemas.View
   alias Adapters.Queries.Users, as: Query
+
+  def like_profile(user_id, target_id, liked) do
+    fav =
+      from(v in View,
+        where: v.viewerId == ^target_id and v.targetId == ^user_id and v.liked == true
+      )
+      |> Repo.one()
+
+    IO.inspect(fav)
+
+    case fav do
+      {:ok, fav} ->
+        IO.inspect(fav)
+        {:ok, fav}
+
+      {:error, error} ->
+        {:error, error}
+
+      _ ->
+        %View{viewerId: user_id, targetId: target_id, liked: liked}
+    end
+  end
 
   def delete(user_id) do
     %User{id: user_id} |> Repo.delete()
