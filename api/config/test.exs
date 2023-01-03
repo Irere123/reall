@@ -3,7 +3,7 @@ import Config
 database_url =
   System.get_env("DATABASE_URL") || "postgres://postgres:postgres@localhost/reall_repo_test"
 
-config :api, Api.Repo,
+config :api, Adapters.Repo,
   url: database_url,
   pool: Ecto.Adapters.SQL.Sandbox
 

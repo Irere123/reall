@@ -1,4 +1,4 @@
-defmodule Api.Repo.Migrations.ViewModel do
+defmodule Adapters.Repo.Migrations.ViewModel do
   use Ecto.Migration
 
   def change do

@@ -1,6 +1,6 @@
 import Config
 
-config :api, ecto_repos: [Api.Repo]
+config :api, ecto_repos: [Adapters.Repo]
 config :api, websocket_auth_timeout: 10_000
 
 config :extwitter, :json_library, Jason
