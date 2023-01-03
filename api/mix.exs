@@ -9,7 +9,8 @@ defmodule Api.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       elixirc_paths: elixirc_paths(Mix.env()),
-      aliases: aliases()
+      aliases: aliases(),
+      extra_applications: [:ssl]
     ]
   end
 
@@ -22,7 +23,7 @@ defmodule Api.MixProject do
       # moved logger to 2nd position to kill this error
       # calling logger:remove_handler(default) failed: :error {:badmatch, {:error, {:not_found, :default}}}
       extra_applications:
-        [:logger, :ueberauth, :ueberauth_facebook, :ssl] ++
+        [:logger, :ueberauth, :ueberauth_facebook] ++
           dev_only_apps
     ]
   end
