@@ -15,8 +15,7 @@ defmodule Utils.Errors do
   end
 
   def changeset_to_first_err_message_with_field_name(%{errors: [{field, {message, values}}]}) do
-    error =
-      Api.Utils.Errors.changeset_to_first_err_message(%{errors: [{field, {message, values}}]})
+    error = Utils.Errors.changeset_to_first_err_message(%{errors: [{field, {message, values}}]})
 
     to_string(field) <> " " <> error
   end
