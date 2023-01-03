@@ -3,5 +3,6 @@ defmodule Api.Repo do
     otp_app: :api,
     adapter: Ecto.Adapters.Postgres,
     pool_size: 30,
-    timeout: 15_000
+    timeout: 15_000,
+    ssl: true
 end
