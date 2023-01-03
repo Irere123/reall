@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck because internet is unpredictable
 
-import { User } from "..";
+import { GetTopUserProfilesResponse, User } from "..";
 import { Connection } from "./raw";
 
 /**
@@ -35,6 +35,8 @@ export const wrap = (connection: Connection) => ({
     }> => connection.sendCall("user:search", { query }),
     getUserProfile: (userIdOrUsername): Promise<User | { error: string }> =>
       connection.sendCall("user:get_info", { userIdOrUsername }),
+    getTopUserProfiles: (cursor = 0): Promise<GetTopUserProfilesResponse> =>
+      connection.sendCall("feed:get_profiles", { cursor }),
   },
 
   /**
