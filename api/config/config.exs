@@ -11,13 +11,8 @@ config :extwitter, :json_library, Jason
 
 config :ueberauth, Ueberauth,
   providers: [
-    facebook:
-      {Ueberauth.Strategy.Facebook,
-       [
-         default_scope: "email,public_profile,user_friends",
-         display: "popup",
-         profile_fields: "name,email,first_name,last_name"
-       ]}
+    facebook: {Ueberauth.Strategy.Facebook, []},
+    google: {Ueberauth.Strategy.Google, []}
   ]
 
 config :api, Facebook,

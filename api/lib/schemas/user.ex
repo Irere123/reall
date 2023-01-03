@@ -24,6 +24,7 @@ defmodule Schemas.User do
     field(:bio, :string, default: "")
     field(:facebookId, :string)
     field(:githubId, :string)
+    field(:googleId, :string)
     field(:facebookAccessToken, :string)
     field(:githubAccessToken, :string)
     field(:twitterId, :string)

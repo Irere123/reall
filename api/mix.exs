@@ -45,6 +45,7 @@ defmodule Api.MixProject do
       {:extwitter, "~> 0.14.0"},
       {:ueberauth_twitter, "~> 0.4.1"},
       {:ueberauth_facebook, "~> 0.10.0"},
+      {:ueberauth_google, "~> 0.10"},
       {:timex, "~> 3.7"},
       {:credo, "~> 1.6"}
     ]

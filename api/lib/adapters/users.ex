@@ -35,5 +35,6 @@ defmodule Adapters.Users do
   defdelegate set_offline(user_id), to: Adapters.Mutations.Users
 
   defdelegate twitter_find_or_create(user), to: Adapters.Mutations.Users
+  defdelegate google_find_or_create(user), to: Adapters.Mutations.Users
   defdelegate set_ip(user_id, ip), to: Adapters.Mutations.Users
 end

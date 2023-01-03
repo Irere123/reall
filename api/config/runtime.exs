@@ -13,15 +13,19 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: System.get_env("FACEBOOK_CLIENT_ID"),
   client_secret: System.get_env("FACEBOOK_CLIENT_SECRET")
 
+config :ueberauth, Ueberauth.Strategy.Google.OAuth,
+  client_id: {System, :get_env, ["GOOGLE_CLIENT_ID"]},
+  client_secret: {System, :get_env, ["GOOGLE_CLIENT_SECRET"]}
+
 config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
   consumer_key:
-    System.get_env("TWITTER_API_KEY") ||
+    {System, :get_env, ["TWITTER_API_KEY"]} ||
       raise("""
         environment variable TWITTER_API_KEY is missing.
         Create an oauth application on Twitter to get one
       """),
   consumer_secret:
-    System.get_env("TWITTER_SECRET_KEY") ||
+    {System, :get_env, ["TWITTER_SECRET_KEY"]} ||
       raise("""
       environment variable TWITTER_SECRET_KEY is missing.
       Create an oauth application on Twitter to get one

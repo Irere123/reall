@@ -4,6 +4,7 @@ defmodule Api.Router do
   alias Api.Routes.Stats
   alias Api.Routes.User
   alias Api.Routes.TwitterAuth
+  alias Api.Routes.GoogleAuth
   alias Api.Routes.DevOnly
 
   use Plug.Router
@@ -19,6 +20,7 @@ defmodule Api.Router do
   forward("/stats", to: Stats)
   forward("/user", to: User)
   forward("/auth/twitter", to: TwitterAuth)
+  forward("/auth/google", to: GoogleAuth)
 
   get _ do
     send_resp(conn, 404, "not found")

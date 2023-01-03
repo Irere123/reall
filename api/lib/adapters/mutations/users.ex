@@ -99,4 +99,42 @@ defmodule Adapters.Mutations.Users do
        )}
     end
   end
+
+  def google_find_or_create(user) do
+    googleId = user["sub"]
+
+    db_user =
+      from(u in User,
+        where: u.googleId == ^googleId,
+        limit: 1
+      )
+      |> Repo.one()
+
+    if db_user do
+      if is_nil(db_user.googleId) do
+        from(u in User,
+          where: u.id == ^db_user.id,
+          update: [
+            set: [
+              googleId: ^googleId
+            ]
+          ]
+        )
+        |> Repo.update_all([])
+      end
+
+      {:find, db_user}
+    else
+      {:create,
+       Repo.insert!(
+         %User{
+           username: user["name"],
+           googleId: googleId,
+           email: if(user["email"] == "", do: nil, else: user["email"]),
+           avatarUrl: user["picture"]
+         },
+         returning: true
+       )}
+    end
+  end
 end
