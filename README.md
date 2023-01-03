@@ -8,7 +8,20 @@
 
 ## What's inside?
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. It includes the following packages/apps:
+## Structure
+
+| Codebase                                                 |    Description     |
+| :------------------------------------------------------- | :----------------: |
+| [api](api)                                               |     Elixir API     |
+| [apps/web](apps/web)                                     |  Next.js frontend  |
+| [packages/client](packages/client)                       | Node.js API Client |
+| [packages/ts-config](packages/tsconfig/)                 | Global TS Configs  |
+| [packages/eslint-config](packages/eslint-config-custom/) |   ES Lint Config   |
+
+## Branches
+
+- dev -> dev stuff happening on this branch
+- prod -> don't touch, this is what's running in prod
 
 ### Apps and Packages
 
@@ -17,6 +30,10 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. I
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+## Contributions
+
+Reall is open to contributions, but I recommend creating an issue or replying in a comment to let me know what you are working on first that way we don't overwrite each other.
 
 ### Utilities
 
