@@ -22,7 +22,7 @@ defmodule Api.MixProject do
       # moved logger to 2nd position to kill this error
       # calling logger:remove_handler(default) failed: :error {:badmatch, {:error, {:not_found, :default}}}
       extra_applications:
-        [:logger, :ueberauth, :ueberauth_facebook] ++
+        [:logger, :ueberauth, :ueberauth_facebook, :ssl] ++
           dev_only_apps
     ]
   end
