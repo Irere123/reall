@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
   BugIcon,
-  FacebookIcon,
   GithubIcon,
+  GoogleIcon,
   LgLogo,
   TwitterIcon,
 } from "../../icons";
@@ -97,15 +97,11 @@ export const LoginPage: React.FC = () => {
           <h3 className="text-secondary-1">Login</h3>
         </div>
         <div className="flex flex-col gap-2">
-          {!__prod__ && (
-            <LoginButton
-              color="primary"
-              oauthUrl={`${apiUrl}/auth/facebook/web`}
-            >
-              <FacebookIcon width={20} height={20} />
-              Continue with Facebook
-            </LoginButton>
-          )}
+          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/google/web`}>
+            <GoogleIcon width={20} height={20} />
+            Continue with Google
+          </LoginButton>
+
           <LoginButton oauthUrl={`${apiUrl}/auth/twitter/web`}>
             <TwitterIcon width={20} height={20} />
             Continue with Twitter
