@@ -8,7 +8,8 @@ defmodule Api.Message.Manifest do
     "auth:request" => Auth.Request,
     "user:get_info" => User.GetInfo,
     "user:search" => User.Search,
-    "feed:get_profiles" => Feed.GetProfiles
+    "feed:get_profiles" => Feed.GetProfiles,
+    "feed:view" => Feed.View
   }
 
   # verify that all of the actions are accounted for in the

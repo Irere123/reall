@@ -29,6 +29,7 @@ defmodule Adapters.Users do
   # MUTATIONS
 
   defdelegate delete(user_id), to: Adapters.Mutations.Users
+  defdelegate like_profile(user_id, target_id, liked), to: Adapters.Mutations.Users
   defdelegate bulk_insert(users), to: Adapters.Mutations.Users
   defdelegate set_online(user_id), to: Adapters.Mutations.Users
   defdelegate set_offline(user_id), to: Adapters.Mutations.Users

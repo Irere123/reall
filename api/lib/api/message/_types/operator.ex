@@ -13,6 +13,7 @@ defenum(
 
     # feed commands and casts: 64..127
     {Feed.GetProfiles, 64},
+    {Feed.View, 65},
 
     # chat commands and casts: 128..191
 
