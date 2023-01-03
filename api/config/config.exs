@@ -3,6 +3,10 @@ import Config
 config :api, ecto_repos: [Api.Repo]
 config :api, websocket_auth_timeout: 10_000
 
+config :api, Api.Repo,
+  pool_size: 30,
+  ssl: true
+
 config :extwitter, :json_library, Jason
 
 config :ueberauth, Ueberauth,
