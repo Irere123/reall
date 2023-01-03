@@ -2,7 +2,6 @@ defmodule Utils.Release do
   @app :api
 
   def migrate do
-    Application.ensure_all_started(@app)
     load_app()
 
     for repo <- repos() do
@@ -21,5 +20,6 @@ defmodule Utils.Release do
 
   defp load_app do
     Application.load(@app)
+    Application.ensure_all_started(@app)
   end
 end
