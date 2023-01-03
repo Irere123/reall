@@ -8,7 +8,7 @@ import { useConn } from "../../shared-hooks/useConn";
 import { useRouter } from "next/router";
 
 export const MiddleHeader = () => {
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
   const { user } = useConn();
 
   return (
@@ -18,10 +18,18 @@ export const MiddleHeader = () => {
         placeholder="Search for people"
       />
       <div className="flex gap-3 items-center">
-        <Link href={`/messages`}>
+        <Link
+          href={`/messages`}
+          className={
+            pathname === "/messages" ? "text-accent" : "text-secondary-2"
+          }
+        >
           <SendIcon />
         </Link>
-        <Link href={`/inbox`}>
+        <Link
+          href={`/inbox`}
+          className={pathname === "/inbox" ? "text-accent" : "text-secondary-2"}
+        >
           <InboxIcon />
         </Link>
         <Link href={`/u/${user.username}`}>

@@ -1,22 +1,27 @@
+import { User } from "@reall/client";
 import React from "react";
-import { PeopleIcon, SendIcon, ThreeDotsIcon } from "../../icons";
+import { CheckIcon, HeartIcon, SendIcon } from "../../icons";
 
-import { SingleUser } from "../UserAvatar/SingleUser";
+export interface CardFooterProps {
+  user: User;
+}
 
-export interface CardFooterProps {}
-
-export const CardFooter: React.FC<CardFooterProps> = ({}) => {
+export const CardFooter: React.FC<CardFooterProps> = ({ user }) => {
   return (
-    <div className="flex flex-col w-full p-3">
-      <div className="flex flex-1 items-center gap-3">
-        <SendIcon />
-        <PeopleIcon />
+    <div className="flex flex-col gap-3 w-full p-3">
+      <div className="flex flex-1 items-center gap-3 text-secondary-1">
+        <button>
+          <HeartIcon />
+        </button>
+        <button>
+          <CheckIcon />
+        </button>
+        <button>
+          <SendIcon />
+        </button>
       </div>
       <div className="text-secondary-2">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores sit
-          vel nesciunt amet ut, incidunt error nostrum aliquid optio asperiores!
-        </p>
+        <p>{user.bio}</p>
       </div>
     </div>
   );

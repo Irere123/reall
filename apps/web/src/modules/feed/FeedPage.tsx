@@ -1,12 +1,11 @@
 import React from "react";
-import { useConn } from "../../shared-hooks/useConn";
 import { PageComponent } from "../../types/PageComponent";
-import { Card } from "../../ui/Card";
 import { MiddleHeader } from "../../ui/header/MiddleHeader";
 import { WaitForWsAndAuth } from "../auth/WaitForWsAndAuth";
 import { HeaderController } from "../display/HeaderController";
 import { MiddlePanel } from "../layouts/GridPanels";
 import { MainLayout } from "../layouts/MainLayout";
+import { FeedController } from "./FeedController";
 
 interface FeedPageProps {}
 
@@ -16,9 +15,7 @@ export const FeedPage: PageComponent<FeedPageProps> = () => {
       <MainLayout>
         <HeaderController embed={{}} title={`Dashboard`} />
         <MiddlePanel stickyChildren={<MiddleHeader />}>
-          <div className="flex flex-col w-full mb-3 ml-3">
-            <Card />
-          </div>
+          <FeedController />
         </MiddlePanel>
       </MainLayout>
     </WaitForWsAndAuth>
