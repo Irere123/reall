@@ -5,6 +5,7 @@ defmodule Adapters.Access.Users do
   alias Adapters.Queries.Users, as: Query
   alias Api.Repo
   alias Api.Schemas.User
+  alias Api.Schemas.View
 
   def get(user_id) do
     Repo.get(User, user_id)
@@ -20,10 +21,15 @@ defmodule Adapters.Access.Users do
     |> Repo.one()
   end
 
-  def get_top_users(offset \\ 0) do
+  def get_top_users(user_id, offset \\ 0) do
     items =
       from(u in User,
-        order_by: [desc: u.numLikes],
+        left_join: v in View,
+        on: v.viewerId == ^user_id and u.id == v.targetId,
+        left_join: v2 in View,
+        on: v2.targetId == ^user_id and u.id == v2.viewerId and v2.liked == true,
+        where: is_nil(v) and u.id != ^user_id,
+        order_by: fragment("random()"),
         offset: ^offset,
         limit: ^@fetch_limit
       )

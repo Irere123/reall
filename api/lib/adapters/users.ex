@@ -19,7 +19,7 @@ defmodule Adapters.Users do
   # function and retrieve the data either from the fields or with a preload.
   defdelegate get_by_id(user_id), to: Adapters.Access.Users
   defdelegate get_by_username(username), to: Adapters.Access.Users
-  defdelegate get_top_users(offset \\ 0), to: Adapters.Access.Users
+  defdelegate get_top_users(user_id, offset \\ 0), to: Adapters.Access.Users
   defdelegate search_username(query), to: Adapters.Access.Users
 
   defdelegate get_ip(user_id), to: Adapters.Access.Users

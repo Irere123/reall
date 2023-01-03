@@ -30,7 +30,7 @@ defmodule Api.Message.Feed.GetProfiles do
 
   def execute(changeset, state) do
     with {:ok, request} <- apply_action(changeset, :validate),
-         {users, nextCursor} <- Users.get_top_users(request.cursor) do
+         {users, nextCursor} <- Users.get_top_users(state.user.id, request.cursor) do
       {:reply, %Reply{profiles: users, nextCursor: nextCursor, initial: request.cursor == 0},
        state}
     end
