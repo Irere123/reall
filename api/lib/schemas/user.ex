@@ -1,4 +1,4 @@
-defmodule Api.Schemas.User do
+defmodule Schemas.User do
   use Ecto.Schema
 
   # the struct defined here can also be pushed to the user

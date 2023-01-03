@@ -1,5 +1,5 @@
-defmodule Api.Auth do
-  alias Api.Utils.TokenUtils
+defmodule Utils.Auth do
+  alias Utils.TokenUtils
 
   alias Adapters
 

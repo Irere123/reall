@@ -58,9 +58,9 @@ defmodule Api.Routes.TwitterAuth do
         |> Redirect.redirect(
           base_url <>
             "/?accessToken=" <>
-            Api.AccessToken.generate_and_sign!(%{"userId" => db_user.id}) <>
+            Utils.AccessToken.generate_and_sign!(%{"userId" => db_user.id}) <>
             "&refreshToken=" <>
-            Api.RefreshToken.generate_and_sign!(%{
+            Utils.RefreshToken.generate_and_sign!(%{
               "userId" => db_user.id,
               "tokenVersion" => db_user.tokenVersion
             })

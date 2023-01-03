@@ -3,9 +3,9 @@ defmodule Adapters.Access.Users do
   @fetch_limit 16
 
   alias Adapters.Queries.Users, as: Query
-  alias Api.Repo
-  alias Api.Schemas.User
-  alias Api.Schemas.View
+  alias Adapters.Repo
+  alias Schemas.User
+  alias Schemas.View
 
   def get(user_id) do
     Repo.get(User, user_id)

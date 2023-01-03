@@ -45,4 +45,4 @@ ENV HOME=/app
 
 
 
-CMD bin/api eval "Api.Release.migrate" && bin/api start
+CMD bin/api eval "Utils.Release.migrate" && bin/api start

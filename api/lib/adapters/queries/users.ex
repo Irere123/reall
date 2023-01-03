@@ -5,7 +5,7 @@ defmodule Adapters.Queries.Users do
   """
 
   import Ecto.Query, warn: false
-  alias Api.Schemas.User
+  alias Schemas.User
 
   def start do
     from(u in User)

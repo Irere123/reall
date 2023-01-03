@@ -1,4 +1,4 @@
-defmodule Api.Release do
+defmodule Utils.Release do
   @app :api
 
   def migrate do

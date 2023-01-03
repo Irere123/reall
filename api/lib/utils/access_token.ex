@@ -1,4 +1,4 @@
-defmodule Api.AccessToken do
+defmodule Utils.AccessToken do
   def __default_signer__,
     do: Joken.Signer.create("HS256", Application.fetch_env!(:api, :access_token_secret))
 

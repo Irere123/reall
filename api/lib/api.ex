@@ -5,7 +5,7 @@ defmodule Api do
     children = [
       Components.Supervisors.UserSession,
       Components.StatsCache,
-      {Api.Repo, []},
+      {Adapters.Repo, []},
       {Plug.Cowboy,
        scheme: :http,
        plug: Api.Router,

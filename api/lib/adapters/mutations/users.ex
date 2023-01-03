@@ -1,8 +1,8 @@
 defmodule Adapters.Mutations.Users do
   import Ecto.Query, warn: false
 
-  alias Api.Repo
-  alias Api.Schemas.User
+  alias Adapters.Repo
+  alias Schemas.User
   alias Adapters.Queries.Users, as: Query
 
   def delete(user_id) do

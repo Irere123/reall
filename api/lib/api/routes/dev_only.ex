@@ -1,7 +1,7 @@
 defmodule Api.Routes.DevOnly do
   import Plug.Conn
 
-  alias Api.Schemas.User
+  alias Schemas.User
   use Plug.Router
 
   plug(:match)
@@ -19,10 +19,10 @@ defmodule Api.Routes.DevOnly do
       |> send_resp(
         200,
         Jason.encode!(
-          Api.Utils.TokenUtils.create_tokens(
+          Utils.TokenUtils.create_tokens(
             if(is_nil(user),
               do:
-                Api.Repo.insert!(
+                Adapters.Repo.insert!(
                   %User{
                     username: username,
                     email: "test@" <> username <> ".com",

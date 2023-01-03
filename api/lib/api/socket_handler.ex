@@ -118,7 +118,7 @@ defmodule Api.SocketHandler do
         |> ws_push(state)
 
       {:error, changeset = %Ecto.Changeset{}} ->
-        %{errors: Api.Utils.Errors.changeset_errors(changeset)}
+        %{errors: Utils.Errors.changeset_errors(changeset)}
         |> prepare_socket_msg(state)
         |> ws_push(state)
     end
@@ -188,7 +188,7 @@ defmodule Api.SocketHandler do
   # this common `to_map` function handles them all.
 
   defp to_map(changeset = %Ecto.Changeset{}) do
-    Api.Utils.Errors.changeset_errors(changeset)
+    Utils.Errors.changeset_errors(changeset)
   end
 
   defp to_map(string) when is_binary(string) do

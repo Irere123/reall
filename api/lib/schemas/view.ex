@@ -1,8 +1,8 @@
-defmodule Api.Schemas.View do
+defmodule Schemas.View do
   use Ecto.Schema
 
   import Ecto.Changeset
-  alias Api.Schemas.User
+  alias Schemas.User
 
   @primary_key false
   schema "views" do

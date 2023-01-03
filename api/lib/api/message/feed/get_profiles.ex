@@ -20,7 +20,7 @@ defmodule Api.Message.Feed.GetProfiles do
 
     @primary_key false
     embedded_schema do
-      embeds_many(:profiles, Api.Schemas.User)
+      embeds_many(:profiles, Schemas.User)
       field(:nextCursor, :integer)
       field(:initial, :boolean)
     end
