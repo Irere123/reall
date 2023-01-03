@@ -5,7 +5,10 @@ config :api, websocket_auth_timeout: 10_000
 
 config :api, Api.Repo,
   pool_size: 30,
-  ssl: true
+  ssl: true,
+  ssl_opts: [
+    versions: [:"tlsv1.2"]
+  ]
 
 config :extwitter, :json_library, Jason
 
