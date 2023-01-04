@@ -85,14 +85,16 @@ export const LoginPage: React.FC = () => {
   return (
     <div
       className="grid w-full h-full"
-      style={{ gridTemplateRows: "0.3fr auto 1fr" }}
+      style={{
+        gridTemplateRows: "0.3fr auto 1fr",
+      }}
     >
       <HeaderController embed={{}} title="Login" />
       <div className="hidden sm:flex" />
       <div className="flex justify-self-center self-center sm:hidden">
         <LgLogo />
       </div>
-      <div className="flex m-auto flex-col p-6 gap-5 bg-primary-800 sm:rounded-8 z-10 sm:w-400 w-full">
+      <div className="flex m-auto flex-col p-6 gap-5  sm:rounded-8 z-10 sm:w-400 w-full">
         <div className="flex justify-center">
           <h3 className="text-secondary-1">Login</h3>
         </div>
@@ -106,7 +108,6 @@ export const LoginPage: React.FC = () => {
             <TwitterIcon width={20} height={20} />
             Continue with Twitter
           </LoginButton>
-          <div className="border-b-2 border-primary-2" />
           {!__prod__ && (
             <LoginButton
               color="accent"

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import LoadingScreen from "../../ui/LoadingScreen";
 import { WebSocketContext } from "../ws/WebSocketProvider";
 import { useVerifyLoggedIn } from "./useVerifyLoggedIn";
 
@@ -16,9 +17,12 @@ export const WaitForWsAndAuth: React.FC<WaitForWsAndAuthProps> = ({
   }
 
   if (!conn) {
-    // @todo make this better
-    return <div className="flex">loading...</div>;
+    return <LoadingScreen />;
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <LoadingScreen />
+    </>
+  );
 };
