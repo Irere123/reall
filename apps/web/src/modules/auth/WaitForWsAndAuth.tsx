@@ -22,7 +22,7 @@ export const WaitForWsAndAuth: React.FC<WaitForWsAndAuthProps> = ({
 
   return (
     <>
-      <LoadingScreen />
+      {children}
     </>
   );
 };

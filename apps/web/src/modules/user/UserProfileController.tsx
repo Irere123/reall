@@ -2,12 +2,13 @@ import { useRouter } from "next/router";
 import React from "react";
 import { isServer } from "../../lib/isServer";
 import { useTypeSafeQuery } from "../../shared-hooks/useTypeSafeQuery";
+import { Button } from "../../ui/Button";
 import { CenterLoader } from "../../ui/CenterLoader";
 import { InfoText } from "../../ui/InfoText";
 import { UserProfile } from "../../ui/UserProfile";
 
 export const UserProfileController = () => {
-  const { query: params } = useRouter();
+  const { query: params, push } = useRouter();
   const { data, isLoading } = useTypeSafeQuery(
     ["getUserProfile", params.username as string],
     {
@@ -31,6 +32,9 @@ export const UserProfileController = () => {
   return (
     <>
       <UserProfile user={data} />
+      <Button color="secondary" onClick={() => push("/logout")}>
+        Logout
+      </Button>
     </>
   );
 };

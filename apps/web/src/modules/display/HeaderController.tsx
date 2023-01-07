@@ -18,7 +18,7 @@ export const HeaderController: NextPage<HeaderControllerProps> = ({
 }) => {
   return (
     <Header>
-      {title ? <title>{title} | Reall</title> : <title>Reall / Connect</title>}
+      {title ? <title>{title} / Reall</title> : <title>Reall / Connect</title>}
       <meta name="description" content={description} />
       <meta
         name="keywords"

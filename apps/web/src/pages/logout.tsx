@@ -13,6 +13,7 @@ const Logout: React.FC<logoutProps> = ({}) => {
     s.setTokens,
   ]);
   const { replace } = useRouter();
+
   useEffect(() => {
     if (!hasTokens) {
       replace("/");
@@ -21,7 +22,10 @@ const Logout: React.FC<logoutProps> = ({}) => {
 
   return (
     <>
-      <p onClick={() => setTokens({ accessToken: "", refreshToken: "" })}>
+      <p
+        className="text-secondary-2"
+        onClick={() => setTokens({ accessToken: "", refreshToken: "" })}
+      >
         click here if you are not automatically redirected
       </p>
     </>
