@@ -19,7 +19,7 @@ export const Card: React.FC<CardProps> = ({
   onShareClick,
 }) => {
   return (
-    <div className="flex flex-col border-2 rounded-5 border-primary-2 sm:w-400">
+    <div className="flex flex-col border-2 rounded-5 border-primary-800 sm:w-400">
       <CardHeader
         avatarUrl={user.avatarUrl}
         isOnline={user.online}

@@ -1,41 +1,33 @@
-import React from "react";
-import Link from "next/link";
+import React, { FC, MouseEventHandler, ReactNode } from "react";
+import { Button } from "../Button";
 
-import { InboxIcon, SendIcon } from "../../icons";
-import { SearchBar } from "../Search/SearchBar";
-import { SingleUser } from "../UserAvatar/SingleUser";
-import { useConn } from "../../shared-hooks/useConn";
-import { useRouter } from "next/router";
+export interface MiddleProps {
+  emptyPlaceholder: ReactNode;
+}
 
-export const MiddleHeader = () => {
-  const { push, pathname } = useRouter();
-  const { user } = useConn();
+export interface MiddleHeaderProps {
+  title: string;
+  actionTitle?: string;
+  onActionClicked?: MouseEventHandler<HTMLButtonElement>;
+}
 
+export const MiddleHeader: FC<MiddleHeaderProps> = ({
+  actionTitle,
+  onActionClicked,
+  title,
+}) => {
   return (
-    <div className="flex gap-7">
-      <SearchBar
-        onClick={() => push("/search")}
-        placeholder="Search for people"
-      />
-      <div className="flex gap-3 items-center">
-        <Link
-          href={`/messages`}
-          className={
-            pathname === "/messages" ? "text-accent" : "text-secondary-2"
-          }
+    <div className="flex justify-between items-end mb-5 ml-4">
+      <h4 className="text-primary-100">{title}</h4>
+      {actionTitle ?? (
+        <Button
+          data-testid="Middle-action-button"
+          transition
+          onClick={onActionClicked}
         >
-          <SendIcon />
-        </Link>
-        <Link
-          href={`/inbox`}
-          className={pathname === "/inbox" ? "text-accent" : "text-secondary-2"}
-        >
-          <InboxIcon />
-        </Link>
-        <Link href={`/u/${user.username}`}>
-          <SingleUser src={user.avatarUrl} size="sm" isOnline={user.online} />
-        </Link>
-      </div>
+          {actionTitle}
+        </Button>
+      )}
     </div>
   );
 };

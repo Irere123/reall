@@ -9,9 +9,9 @@ export interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ textarea, className, error, transparent, ...props }, ref) => {
-    const bg = transparent ? `bg-transparent` : `bg-primary-2`;
-    const ring = error ? `ring-1 ring-secondary-2` : "";
-    const cn = `w-full py-2 px-4 rounded-8 text-secondary-1 placeholder-primary-secondary-2 focus:outline-none ${bg} ${ring} ${className}`;
+    const bg = transparent ? `bg-transparent` : `bg-primary-800`;
+    const ring = error ? `ring-1 ring-primary-300` : "";
+    const cn = `w-full py-2 px-4 rounded-8 text-primary-200 placeholder-primary-200 focus:outline-none ${bg} ${ring} ${className}`;
 
     return textarea ? (
       <textarea

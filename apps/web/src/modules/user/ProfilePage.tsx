@@ -2,7 +2,6 @@ import { User } from "@reall/client";
 import React from "react";
 import { apiUrl } from "../../lib/constants";
 import { PageComponent } from "../../types/PageComponent";
-import { MiddleHeader } from "../../ui/header/MiddleHeader";
 import { WaitForWsAndAuth } from "../auth/WaitForWsAndAuth";
 import { HeaderController } from "../display/HeaderController";
 import { MiddlePanel } from "../layouts/GridPanels";
@@ -31,7 +30,7 @@ export const ProfilePage: PageComponent<ProfilePageProps> = ({
       )}
       <WaitForWsAndAuth>
         <MainLayout>
-          <MiddlePanel stickyChildren={<MiddleHeader />}>
+          <MiddlePanel>
             <UserProfileController key={username} />
           </MiddlePanel>
         </MainLayout>

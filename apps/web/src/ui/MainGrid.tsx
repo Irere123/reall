@@ -9,15 +9,16 @@ export const MainInnerGrid: React.FC<DashboardGridProps> = ({
   children,
   className = "",
 }) => {
-  let gridTemplateColumns = "70px 600px";
+  let gridTemplateColumns = "235px 550px 325px";
 
   return (
     <div
       id="main"
-      className={`flex relative sm:grid ${className}`}
+      className={`relative  ${className}`}
       style={{
+        display: "grid",
         gridTemplateColumns,
-        columnGap: 40,
+        columnGap: 60,
       }}
     >
       {children}

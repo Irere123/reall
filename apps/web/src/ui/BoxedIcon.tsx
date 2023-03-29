@@ -1,8 +1,10 @@
-import React, { ReactElement } from "react";
+import { useRouter } from "next/router";
+import React from "react";
 
 const colorMap = {
-  primary: "bg-primary-2",
-  secondary: "bg-accent-secondary",
+  primary: "bg-primary-800",
+  transparent: "bg-transparent",
+  secondary: "bg-primary-700",
 };
 
 export interface BoxedIconProps

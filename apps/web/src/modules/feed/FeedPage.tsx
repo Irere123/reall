@@ -14,7 +14,7 @@ export const FeedPage: PageComponent<FeedPageProps> = () => {
     <WaitForWsAndAuth>
       <MainLayout>
         <HeaderController embed={{}} title={`Dashboard`} />
-        <MiddlePanel stickyChildren={<MiddleHeader />}>
+        <MiddlePanel stickyChildren={<MiddleHeader title="Feed" />}>
           <FeedController />
         </MiddlePanel>
       </MainLayout>

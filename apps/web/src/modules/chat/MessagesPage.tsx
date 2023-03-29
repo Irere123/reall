@@ -15,13 +15,7 @@ export const MessagesPage: PageComponent<MessagesPageProps> = () => {
     <WaitForWsAndAuth>
       <MainLayout>
         <HeaderController embed={{}} title={`Messages`} />
-        <MiddlePanel stickyChildren={<MiddleHeader />}>
-          <div className="flex w-full items-center px-3">
-            <h4 className="text-secondary-1 flex flex-1">Chat</h4>
-            <button>
-              <SettingsIcon />
-            </button>
-          </div>
+        <MiddlePanel stickyChildren={<MiddleHeader title="Chat" />}>
           <div className="px-3 pt-3 flex flex-col gap-3">
             <ChatUserController />
           </div>

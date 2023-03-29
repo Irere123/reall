@@ -1,7 +1,6 @@
 import { User } from "@reall/client";
 import React from "react";
 import { CheckIcon, HeartIcon, SendIcon } from "../../icons";
-import { useWrappedConn } from "../../shared-hooks/useConn";
 import { useTypeSafeMutation } from "../../shared-hooks/useTypeSafeMutation";
 
 export interface CardFooterProps {
@@ -21,7 +20,7 @@ export const CardFooter: React.FC<CardFooterProps> = ({
 
   return (
     <div className="flex flex-col gap-3 w-full p-3">
-      <div className="flex flex-1 items-center gap-3 text-secondary-1">
+      <div className="flex flex-1 items-center gap-3 text-primary-100">
         <button
           onClick={() => {
             view([user.id]);
@@ -40,7 +39,7 @@ export const CardFooter: React.FC<CardFooterProps> = ({
           <SendIcon />
         </button>
       </div>
-      <div className="text-secondary-2">
+      <div className="text-primary-200">
         <p>{user.bio}</p>
       </div>
     </div>

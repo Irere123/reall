@@ -6,5 +6,5 @@ interface InfoTextProps {
 }
 
 export const InfoText: React.FC<InfoTextProps> = ({ className, children }) => {
-  return <div className={`text-secondary-1 ${className}`}>{children}</div>;
+  return <div className={`text-primary-100 ${className}`}>{children}</div>;
 };

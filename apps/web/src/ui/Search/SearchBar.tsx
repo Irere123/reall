@@ -21,7 +21,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
 }) => {
   return (
     <div
-      className={`items-center flex w-full bg-primary-2 text-secondary-2 transition duration-200 ease-in-out focus-within:text-secondary-1 rounded-lg ${
+      className={`items-center flex w-full bg-primary-800 text-primary-100 transition duration-200 ease-in-out focus-within:text-secondary-1 rounded-lg ${
         mobile ? "px-4" : ""
       } ${className}`}
     >

@@ -1,8 +1,6 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.18.0/inter.css");
 @import "tailwindcss/base";
-@import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
 
 h1,
 h2,
@@ -24,15 +22,21 @@ p.bold {
   font-size: 14px;
 
   --color-button-text: #fff;
-  --color-primary-1: #0D1117;
-  --color-primary-2: #161B22;
-  --color-secondary-1: #C9D1D9;
-  --color-secondary-2: #E2F6FC;
+  --color-primary-100: #dee3ea;
+  --color-primary-200: #b2bdcd;
+  --color-primary-300: #5d7290;
+  --color-primary-600: #323d4d;
+  --color-primary-700: #242c37;
+  --color-primary-800: #151a21;
+  --color-primary-900: #0b0e11;
+  --color-secondary-washed-out: #879eed;
+  --color-secondary: #5575e7;
+  --color-accent-glow: rgba(253, 77, 77, 0.3);
   --color-accent: #fd4d4d;
-  --color-accent-secondary: #58A6FF;
   --color-accent-hover: #fd6868;
   --color-accent-disabled: #f5bfbf;
   --screen-height-reduction: 0px;
+  --color-primary-100-translucent: rgba(222, 227, 234, 0.15);
 }
 
 h1 {
@@ -63,13 +67,14 @@ p.small {
 /* for firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary-2) rgba(0, 0, 0, 0);
+  scrollbar-color: var(--color-primary-700) rgba(0, 0, 0, 0);
 }
 
 /* for non-firefox */
 ::-webkit-scrollbar {
   overflow: overlay;
   width: 8px;
+  /* shouldnt hardcode width, pls find way to make it dynamic, thin wasn't working for me...*/
 }
 
 ::-webkit-scrollbar-track {
@@ -77,17 +82,22 @@ p.small {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary-2);
+  background-color: var(--color-primary-700);
   border-radius: 5px;
 }
 
 html,
 body,
 #__next {
-  background-color: var(--color-primary-1);
+  background-color: var(--color-primary-900);
   height: 100%;
   width: 100%;
   display: flex;
+}
+
+audio {
+  width: 0;
+  display: none !important;
 }
 
 html {
@@ -99,9 +109,8 @@ html {
 }
 
 ::-webkit-resizer {
-  background: var(--color-primary-2);
+  background: var(--color-primary-700);
 }
-
 
 #nprogress {
   position: relative;
@@ -109,19 +118,18 @@ html {
 }
 
 #nprogress .bar {
-  background: var(--color-accent-secondary) !important;
+  background: var(--color-accent-hover) !important;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px var(--color-accent-secondary),
-    0 0 5px var(--color-accent-secondary) !important;
+  box-shadow: 0 0 10px var(--color-accent-hover),
+    0 0 5px var(--color-accent-hover) !important;
 }
 
 #nprogress .spinner-icon {
-  border-top-color: var(--color-accent-secondary) !important;
-  border-left-color: var(--color-accent-secondary) !important;
+  border-top-color: var(--color-accent-hover) !important;
+  border-left-color: var(--color-accent-hover) !important;
 }
-
 
 img.emoji {
   height: 1.2rem;
@@ -141,3 +149,6 @@ img.emoji {
   height: calc(100vh - var(--screen-height-reduction));
 }
 
+button:focus {
+  outline: none;
+}

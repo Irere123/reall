@@ -15,8 +15,7 @@ export const InboxPage: PageComponent<InboxPageProps> = () => {
     <WaitForWsAndAuth>
       <MainLayout>
         <HeaderController title={`Inbox`} />
-        <MiddlePanel stickyChildren={<MiddleHeader />}>
-          <h4 className="text-secondary-1 mb-3">Inbox</h4>
+        <MiddlePanel stickyChildren={<MiddleHeader title="Inbox" />}>
           <InboxController />
         </MiddlePanel>
       </MainLayout>
