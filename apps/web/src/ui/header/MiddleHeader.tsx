@@ -19,7 +19,7 @@ export const MiddleHeader: FC<MiddleHeaderProps> = ({
   return (
     <div className="flex justify-between items-end mb-5 ml-4">
       <h4 className="text-primary-100">{title}</h4>
-      {actionTitle ?? (
+      {actionTitle ? (
         <Button
           data-testid="Middle-action-button"
           transition
@@ -27,7 +27,7 @@ export const MiddleHeader: FC<MiddleHeaderProps> = ({
         >
           {actionTitle}
         </Button>
-      )}
+      ) : null}
     </div>
   );
 };

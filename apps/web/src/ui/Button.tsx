@@ -12,13 +12,18 @@ const sizeClassnames = {
 };
 
 const colorClassnames = {
-  primary: "text-button bg-primary-2 transition duration-200 ease-in-out",
-  secondary: "text-button bg-accent-secondary disabled:text-primary-300",
-  accent:
-    "text-button bg-accent hover:bg-accent-hover disabled:bg-accent-disabled disabled:text-primary-300",
+  primary:
+    "text-button bg-accent transition duration-200 ease-in-out hover:bg-accent-hover disabled:text-accent-disabled disabled:bg-accent-hover",
+  secondary:
+    "text-button bg-primary-700 hover:bg-primary-600 disabled:text-primary-300",
+  "secondary-800":
+    "text-button bg-primary-800 hover:bg-primary-600 disabled:text-primary-300",
+  "primary-300":
+    "text-button bg-primary-700 hover:bg-primary-600 disabled:text-primary-300",
   transparent: "text-button bg-transparent",
+  "accent-secondary":
+    "text-button bg-secondary hover:bg-secondary-washed-out disabled:text-secondary-washed-out",
 };
-
 export type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement

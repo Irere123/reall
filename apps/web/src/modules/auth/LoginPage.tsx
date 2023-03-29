@@ -16,7 +16,7 @@ import { useTokenStore } from "./useTokenStore";
 
 interface LoginButtonProps {
   children: [React.ReactNode, React.ReactNode];
-  color?: "secondary" | "primary" | "accent";
+  dev?: boolean;
   onClick?: () => void;
   oauthUrl?: string; // React.FC didn't like & ({ onClick: () => void } | { oauthUrl: string })
 }
@@ -24,8 +24,8 @@ interface LoginButtonProps {
 const LoginButton: React.FC<LoginButtonProps> = ({
   children,
   onClick,
+  dev,
   oauthUrl,
-  color = "secondary",
   ...props
 }) => {
   const { query: params } = useRouter();
@@ -41,7 +41,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   return (
     <Button
       className="justify-center text-base py-3 mt-2"
-      color={color}
+      color={dev ? "primary" : "secondary"}
       onClick={oauthUrl ? clickHandler : onClick}
       {...props}
     >
@@ -96,10 +96,10 @@ export const LoginPage: React.FC = () => {
       </div>
       <div className="flex m-auto flex-col p-6 gap-5  sm:rounded-8 z-10 sm:w-400 w-full">
         <div className="flex justify-center">
-          <h3 className="text-secondary-1">Login</h3>
+          <h3 className="text-primary-100">Login</h3>
         </div>
         <div className="flex flex-col gap-2">
-          <LoginButton color="primary" oauthUrl={`${apiUrl}/auth/google/web`}>
+          <LoginButton oauthUrl={`${apiUrl}/auth/google/web`}>
             <GoogleIcon width={20} height={20} />
             Continue with Google
           </LoginButton>
@@ -110,7 +110,7 @@ export const LoginPage: React.FC = () => {
           </LoginButton>
           {!__prod__ && (
             <LoginButton
-              color="accent"
+              dev={true}
               onClick={async () => {
                 const name = window.prompt("username");
 

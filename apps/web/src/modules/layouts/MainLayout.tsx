@@ -3,17 +3,18 @@ import { MainInnerGrid } from "../../ui/MainGrid";
 import { Sidebar } from "./Sidebar";
 
 export interface MainLayoutProps {
-  sidebar?: React.ReactNode;
+  rightPanel?: React.ReactNode;
+  leftPanel?: React.ReactNode;
   children: React.ReactNode;
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
   children,
-  sidebar = <Sidebar />,
+  leftPanel = <Sidebar />,
 }) => {
   let middle = (
     <>
-      {sidebar}
+      {leftPanel}
       {children}
     </>
   );
