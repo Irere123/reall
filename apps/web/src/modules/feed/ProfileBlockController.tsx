@@ -2,6 +2,7 @@ import React from "react";
 import { useConn } from "../../shared-hooks/useConn";
 import { ProfileBlock } from "../../ui/ProfileBlock";
 import { UserSummaryCard } from "../../ui/UserSummaryCard";
+import { FollowingOnlineController } from "./FollowingOnlineController";
 
 interface ProfileBlockControllerProps {}
 
@@ -22,7 +23,7 @@ export const ProfileBlockController: React.FC<
             isOnline={false}
           />
         }
-        bottom={<></>}
+        bottom={<FollowingOnlineController />}
       />
     </>
   );

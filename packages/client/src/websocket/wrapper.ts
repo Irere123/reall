@@ -53,12 +53,14 @@ export const wrap = (connection: Connection) => ({
         cursor,
       }),
     getMyFollowing: (
+      username: string,
       cursor = 0
     ): Promise<{
-      users: UserWithFollowInfo[];
+      following: UserWithFollowInfo[];
       nextCursor: number | null;
     }> =>
       connection.sendCall("user:get_following", {
+        username,
         cursor,
       }),
   },
