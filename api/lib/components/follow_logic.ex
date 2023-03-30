@@ -1,5 +1,31 @@
 defmodule Components.Follow do
   alias Adapters.Follows
+  alias Adapters.Users
+
+  def get_follow_list(user_id, user_id_to_get_list_for, get_following_list, cursor) do
+    if get_following_list do
+      Follows.get_following(user_id, user_id_to_get_list_for, cursor)
+    else
+      Follows.get_followers(user_id, user_id_to_get_list_for, cursor)
+    end
+  end
+
+  # probably can be refactored into a single db query
+  def get_follow_list_by_username(user_id, username, get_following_list, cursor) do
+    user = Users.get_by_username(username)
+
+    case user do
+      %{id: id} ->
+        if get_following_list do
+          Follows.get_following(user_id, id, cursor)
+        else
+          Follows.get_followers(user_id, id, cursor)
+        end
+
+      _ ->
+        %{users: [], nextCursor: nil}
+    end
+  end
 
   # TODO: break this out into assertive "follow" and "unfollow" commands, instead of
   # ambiguous "should_follow"

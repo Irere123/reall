@@ -10,6 +10,8 @@ defmodule Api.Message.Manifest do
     "user:search" => User.Search,
     "user:follow" => User.Follow,
     "user:unfollow" => User.Unfollow,
+    "user:get_followers" => User.GetFollowers,
+    "user:get_following" => User.GetFollowing,
     "feed:get_profiles" => Feed.GetProfiles,
     "feed:view" => Feed.View
   }

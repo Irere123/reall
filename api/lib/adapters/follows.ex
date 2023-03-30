@@ -10,6 +10,70 @@ defmodule Adapters.Follows do
   alias Schemas.User
   alias Schemas.Follow
 
+  def get_followers(user_id, user_id_to_get_followers_for, offset \\ 20) do
+    items =
+      from(
+        f in Follow,
+        where: f.userId == ^user_id_to_get_followers_for,
+        inner_join: u in User,
+        on: f.followerId == u.id,
+        left_join: f2 in Follow,
+        on: f2.userId == u.id and f2.followerId == ^user_id,
+        select: %{u | youAreFollowing: not is_nil(f2.userId)},
+        limit: ^@fetch_limit,
+        offset: ^offset,
+        order_by: [desc: f.inserted_at]
+      )
+      |> Adapters.Repo.all()
+
+    {Enum.slice(items, 0, -1 + @fetch_limit),
+     if(length(items) == @fetch_limit, do: -1 + offset + @fetch_limit, else: nil)}
+  end
+
+  # fetch all the users
+  def get_my_following(user_id, offset \\ 0) do
+    items =
+      from(
+        f in Follow,
+        inner_join: u in User,
+        on: f.userId == u.id,
+        left_join: f2 in Follow,
+        on: f2.userId == ^user_id and f2.followerId == u.id,
+        select: %{
+          u
+          | followsYou: not is_nil(f2.userId),
+            youAreFollowing: true
+        },
+        limit: ^@fetch_limit,
+        offset: ^offset,
+        order_by: [desc: u.online]
+      )
+      |> Adapters.Repo.all()
+
+    {Enum.slice(items, 0, -1 + @fetch_limit),
+     if(length(items) == @fetch_limit, do: -1 + offset + @fetch_limit, else: nil)}
+  end
+
+  def get_following(user_id, user_id_to_get_following_for, offset \\ 20) do
+    items =
+      from(
+        f in Follow,
+        where: f.followerId == ^user_id_to_get_following_for,
+        inner_join: u in User,
+        on: f.userId == u.id,
+        left_join: f2 in Follow,
+        on: f2.userId == u.id and f2.followerId == ^user_id,
+        select: %{u | youAreFollowing: not is_nil(f2.userId)},
+        limit: ^@fetch_limit,
+        offset: ^offset,
+        order_by: [desc: f.inserted_at]
+      )
+      |> Adapters.Repo.all()
+
+    {Enum.slice(items, 0, -1 + @fetch_limit),
+     if(length(items) == @fetch_limit, do: -1 + offset + @fetch_limit, else: nil)}
+  end
+
   def bulk_insert(follows) do
     Adapters.Repo.insert_all(
       Follow,
