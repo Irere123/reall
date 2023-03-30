@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { isServer } from "../../lib/isServer";
+import { useScreenType } from "../../shared-hooks/useScreenType";
 import { useTypeSafeQuery } from "../../shared-hooks/useTypeSafeQuery";
 import { Button } from "../../ui/Button";
 import { Card } from "../../ui/Card";
@@ -65,19 +66,27 @@ const Page = ({
 };
 
 export const FeedController: React.FC = () => {
+  const screenType = useScreenType();
   const [cursors, setCursors] = useState([0]);
 
+  let mb = "mb-7";
+  if (screenType === "fullscreen") {
+    mb = "mb-8";
+  }
+
   return (
-    <motion.div className="flex flex-col gap-5 w-full mb-3">
-      {cursors.map((cursor, i) => (
-        <Page
-          key={cursor}
-          cursor={cursor}
-          isOnlyPage={cursors.length === 1}
-          onLoadMore={(c) => setCursors([...cursors, c])}
-          isLastPage={i === cursors.length - 1}
-        />
-      ))}
-    </motion.div>
+    <div className={`flex flex-1 flex-col ${mb}`} data-testid="feed">
+      <div className="flex flex-col space-y-4">
+        {cursors.map((cursor, i) => (
+          <Page
+            key={cursor}
+            cursor={cursor}
+            isOnlyPage={cursors.length === 1}
+            onLoadMore={(c) => setCursors([...cursors, c])}
+            isLastPage={i === cursors.length - 1}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
