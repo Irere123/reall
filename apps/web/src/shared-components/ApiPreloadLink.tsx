@@ -32,10 +32,8 @@ export const ApiPreloadLink: React.FC<
   const { as, href, onClick } = handlers[route](data as any);
 
   return (
-    <Link href={href} as={as}>
-      <a {...props} onClick={() => onClick(prefetch)}>
-        {children}
-      </a>
+    <Link href={href} as={as} {...props} onClick={() => onClick(prefetch)}>
+      {children}
     </Link>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 
 import { SingleUser } from "./UserAvatar/SingleUser";
 import { kFormatter } from "../lib/kFormatter";
+import { ApiPreloadLink } from "../shared-components/ApiPreloadLink";
 
 export type badge = {
   color: "white" | "grey";
@@ -69,13 +70,18 @@ export const UserSummaryCard: React.FC<UserSummaryCardProps> = ({
         onClick={onClick}
       >
         <div className="flex">
-          <SingleUser size="default" isOnline={isOnline} src={avatarUrl} />
+          <ApiPreloadLink data={{ username }} route="profile">
+            <SingleUser size="default" isOnline={isOnline} src={avatarUrl} />
+          </ApiPreloadLink>
         </div>
         <div className="flex mt-2">
           <div className="flex flex-col ml-3">
-            <span className="text-primary-100 font-bold overflow-hidden break-all text-left">
-              {displayName}
-            </span>
+            <ApiPreloadLink data={{ username }} route="profile">
+              <span className="text-primary-100 font-bold overflow-hidden break-all text-left">
+                {displayName}
+              </span>
+            </ApiPreloadLink>
+
             <span className="text-primary-300 text-left break-all">
               @{username}
             </span>
