@@ -45,5 +45,9 @@ export const wrap = (connection: Connection) => ({
   mutation: {
     viewProfile: (targetId: string, status = "liked"): Promise<unknown> =>
       connection.sendCast("feed:view", { status, targetId }),
+    userFollow: (userId: string): Promise<void> =>
+      connection.sendCall("user:follow", { userId }),
+    userUnfollow: (userId: string): Promise<void> =>
+      connection.sendCall("user:unfollow", { userId }),
   },
 });
