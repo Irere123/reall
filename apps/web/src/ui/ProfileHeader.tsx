@@ -5,6 +5,8 @@ import { ProfileHeaderWrapper } from "./ProfileHeaderWrapper";
 import { SingleUser } from "./UserAvatar/SingleUser";
 import { Button } from "./Button";
 import { SettingsIcon } from "../icons";
+import { useTypeSafeMutation } from "../shared-hooks/useTypeSafeMutation";
+import { useTypeSafeUpdateQuery } from "../shared-hooks/useTypeSafeUpdateQuery";
 
 export interface ProfileHeaderProps {
   displayName: string;
@@ -25,6 +27,12 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   isCurrentUser,
   pfp,
 }) => {
+  const { mutateAsync: follow, isLoading: followLoading } =
+    useTypeSafeMutation("userFollow");
+  const { mutateAsync: unfollow, isLoading: unfollowLoading } =
+    useTypeSafeMutation("userUnfollow");
+  const updater = useTypeSafeUpdateQuery();
+
   return (
     // @TODO: Add the cover api (once it's implemented)}
     <ProfileHeaderWrapper
@@ -54,20 +62,45 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
       <div className="sm:w-3/6">
         <div className="flex flex-row justify-end content-end gap-2">
-          {!isCurrentUser && (
+          {/* {!isCurrentUser && (
             <Button
               size="small"
               color={user.iBlockedThem ? "secondary" : "primary"}
             >
               Block
             </Button>
-          )}
+          )} */}
           {!isCurrentUser && (
             <Button
               size="small"
               color={user.youAreFollowing ? "secondary" : "primary"}
+              onClick={async () => {
+                if (user.youAreFollowing) {
+                  await unfollow([user.id]);
+                  updater(["getUserProfile", username], (u) =>
+                    !u || "error" in u
+                      ? u
+                      : {
+                          ...u,
+                          numFollowers: u.numFollowers + -1,
+                          youAreFollowing: !user.youAreFollowing,
+                        }
+                  );
+                } else {
+                  await follow([user.id]);
+                  updater(["getUserProfile", username], (u) =>
+                    !u || "error" in u
+                      ? u
+                      : {
+                          ...u,
+                          numFollowers: u.numFollowers + 1,
+                          youAreFollowing: !user.youAreFollowing,
+                        }
+                  );
+                }
+              }}
             >
-              Unfollow
+              {user.youAreFollowing ? "Unfollow" : "Follow"}
             </Button>
           )}
           {isCurrentUser ? (

@@ -10,6 +10,8 @@ export type User = {
   goal: string;
   schoolName: string;
   staff: boolean;
+  numFollowing: number;
+  numFollowers: number;
   bio: string | null;
   avatarUrl: string;
   bannerUrl: string | null;
