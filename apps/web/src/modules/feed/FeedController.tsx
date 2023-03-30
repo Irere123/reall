@@ -43,7 +43,6 @@ const Page = ({
   //     </Button>
   //   );
   // }
-  console.log(data);
   return (
     <>
       {data.profiles.map((profile) => (

@@ -1,7 +1,7 @@
 import React from "react";
+import { useScreenType } from "../../shared-hooks/useScreenType";
 import { MainInnerGrid } from "../../ui/MainGrid";
 import { RightPanel } from "./GridPanels";
-import { Sidebar } from "./Sidebar";
 
 export interface MainLayoutProps {
   rightPanel?: React.ReactNode;
@@ -14,14 +14,42 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   leftPanel = <div />,
   rightPanel = <div />,
 }) => {
-  let middle = (
-    <>
-      {leftPanel}
-      {children}
-      <RightPanel>{rightPanel}</RightPanel>
-    </>
-  );
+  const screenType = useScreenType();
+
+  let middle = null;
   let prepend = null;
+
+  switch (screenType) {
+    case "3-cols":
+      middle = (
+        <>
+          {leftPanel}
+          {children}
+          <RightPanel>{rightPanel}</RightPanel>
+        </>
+      );
+      break;
+    case "2-cols":
+      middle = (
+        <>
+          {leftPanel}
+          {children}
+          <RightPanel>{rightPanel}</RightPanel>
+        </>
+      );
+      break;
+    case "1-cols":
+      middle = (
+        <>
+          {leftPanel}
+          {children}
+        </>
+      );
+      break;
+    case "fullscreen":
+      prepend = <></>;
+      middle = <>{children}</>;
+  }
 
   return (
     <>
