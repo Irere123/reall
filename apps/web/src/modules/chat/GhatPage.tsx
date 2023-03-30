@@ -5,9 +5,9 @@ import { MiddlePanel } from "../layouts/GridPanels";
 import { MainLayout } from "../layouts/MainLayout";
 import { GroupChatController } from "./GroupChatController";
 
-interface GroupPageProps {}
+interface ChatPageProps {}
 
-export const GroupPage: PageComponent<GroupPageProps> = () => {
+export const ChatPage: PageComponent<ChatPageProps> = () => {
   return (
     <WaitForWsAndAuth>
       <MainLayout>
@@ -19,4 +19,4 @@ export const GroupPage: PageComponent<GroupPageProps> = () => {
   );
 };
 
-GroupPage.ws = true;
+ChatPage.ws = true;

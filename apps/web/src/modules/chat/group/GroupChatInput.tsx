@@ -12,11 +12,11 @@ export const GroupChatInput: React.FC = () => {
     setMessage("");
   };
   return (
-    <div className="sticky bg-primary-1 bottom-0 w-full bg-primary">
+    <div className="sticky bg-primary-900 bottom-0 w-full">
       <form onSubmit={handleSubmit} className={`pb-3 pt-2 flex flex-col`}>
         <div className={`flex mb-1`}></div>
         <div className="flex items-stretch">
-          <div className="flex flex-1 mr-2 lg:mr-0 items-center bg-primary-2 rounded-lg">
+          <div className="flex flex-1 mr-2 lg:mr-0 items-center bg-primary-800 rounded-lg">
             <Input
               placeholder={"Send message"}
               value={message}
