@@ -7,7 +7,8 @@ defmodule Schemas.User do
 
   @timestamps_opts [type: :utc_datetime_usec]
   @derive {Jason.Encoder, only: ~w(id username avatarUrl bio goal gender online
-           lastOnline schoolName age bannerUrl staff contributions numLikes
+           lastOnline schoolName age bannerUrl staff contributions numFollowers
+          numLikes numFollowing
            inserted_at updated_at
           )a}
   @primary_key {:id, :binary_id, []}
@@ -36,6 +37,8 @@ defmodule Schemas.User do
     field(:ip, :string)
     field(:numLikes, :integer)
     field(:numMatches, :integer)
+    field(:numFollowers, :integer)
+    field(:numFollowing, :integer)
 
     timestamps()
   end
@@ -49,7 +52,7 @@ defmodule Schemas.User do
   defimpl Jason.Encoder do
     @fields ~w(id username avatarUrl bio goal gender online
     lastOnline schoolName age bannerUrl staff contributions numLikes
-    inserted_at updated_at
+    inserted_at updated_at numFollowers numFollowing
    )a
 
     def encode(user, opts) do
