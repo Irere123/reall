@@ -2,10 +2,9 @@ import { User } from "@reall/client";
 import React from "react";
 import { apiUrl } from "../../lib/constants";
 import { PageComponent } from "../../types/PageComponent";
-import { WaitForWsAndAuth } from "../auth/WaitForWsAndAuth";
 import { HeaderController } from "../display/HeaderController";
+import { DefaultDesktopLayout } from "../layouts/DefaultDesktopMainLayout";
 import { MiddlePanel } from "../layouts/GridPanels";
-import { MainLayout } from "../layouts/MainLayout";
 import { UserProfileController } from "./UserProfileController";
 
 interface ProfilePageProps {
@@ -28,13 +27,11 @@ export const ProfilePage: PageComponent<ProfilePageProps> = ({
       ) : (
         <HeaderController />
       )}
-      <WaitForWsAndAuth>
-        <MainLayout>
-          <MiddlePanel>
-            <UserProfileController key={username} />
-          </MiddlePanel>
-        </MainLayout>
-      </WaitForWsAndAuth>
+      <DefaultDesktopLayout>
+        <MiddlePanel>
+          <UserProfileController key={username} />
+        </MiddlePanel>
+      </DefaultDesktopLayout>
     </>
   );
 };
