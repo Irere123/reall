@@ -16,3 +16,24 @@ export type User = {
   inserted_at: string;
   updated_at: string;
 };
+
+export type BaseUser = {
+  username: string;
+  online: boolean;
+  lastOnline: string;
+  id: string;
+  bio: string;
+  displayName: string;
+  avatarUrl: string;
+  bannerUrl: string;
+  numFollowing: number;
+  numFollowers: number;
+  contributions: number;
+  staff: boolean;
+};
+
+export type UserWithFollowInfo = BaseUser & {
+  followsYou?: boolean;
+  youAreFollowing?: boolean;
+  iBlockedThem?: boolean;
+};

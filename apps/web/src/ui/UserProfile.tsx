@@ -1,26 +1,27 @@
-import { User } from "@reall/client";
-import { format } from "date-fns";
+import { UserWithFollowInfo } from "@reall/client";
 import React from "react";
-import { FormattedDate } from "./FormattedDate";
-import { SingleUser } from "./UserAvatar/SingleUser";
+import { ProfileHeader } from "./ProfileHeader";
+import { ProfileTabs } from "./ProfileTabs";
 
 interface UserProfileProps {
-  user: User;
+  user: UserWithFollowInfo;
+  isCurrentUser?: boolean;
 }
 
-export const UserProfile: React.FC<UserProfileProps> = ({ user }) => {
-  const dt = new Date(user.inserted_at);
-
+export const UserProfile: React.FC<UserProfileProps> = ({
+  user,
+  isCurrentUser,
+}) => {
   return (
-    <div className="flex flex-col gap-3">
-      <SingleUser src={user.avatarUrl} isOnline={user.online} size="lg" />
-      <div>
-        <p className="font-bold text-lg text-secondary-2">{user.username}</p>
-        <p className="text-secondary-1">{user.bio}</p>
-        <p className="text-accent-secondary">
-          Joined on <FormattedDate date={dt} />
-        </p>
-      </div>
-    </div>
+    <>
+      <ProfileHeader
+        user={user}
+        pfp={user.avatarUrl}
+        displayName={user.username}
+        isCurrentUser={isCurrentUser}
+        username={user.username}
+      />
+      <ProfileTabs user={user} className="mt-4" />
+    </>
   );
 };

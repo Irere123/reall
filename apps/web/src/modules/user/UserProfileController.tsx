@@ -32,9 +32,6 @@ export const UserProfileController = () => {
   return (
     <>
       <UserProfile user={data} />
-      <Button color="secondary" onClick={() => push("/logout")}>
-        Logout
-      </Button>
     </>
   );
 };
