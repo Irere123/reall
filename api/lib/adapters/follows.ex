@@ -66,7 +66,7 @@ defmodule Adapters.Follows do
         select: %{u | youAreFollowing: not is_nil(f2.userId)},
         limit: ^@fetch_limit,
         offset: ^offset,
-        order_by: [desc: f.inserted_at]
+        order_by: [desc: u.online]
       )
       |> Adapters.Repo.all()
 
