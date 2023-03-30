@@ -39,6 +39,28 @@ export const wrap = (connection: Connection) => ({
       connection.sendCall("user:get_info", { userIdOrUsername }),
     getTopUserProfiles: (cursor = 0): Promise<GetTopUserProfilesResponse> =>
       connection.sendCall("feed:get_profiles", { cursor }),
+    getFollowList: (
+      username: string,
+      limit = 21,
+      cursor = 0
+    ): Promise<{
+      followers: UserWithFollowInfo[];
+      nextCursor: number | null;
+    }> =>
+      connection.sendCall("user:get_followers", {
+        username,
+        limit,
+        cursor,
+      }),
+    getMyFollowing: (
+      cursor = 0
+    ): Promise<{
+      users: UserWithFollowInfo[];
+      nextCursor: number | null;
+    }> =>
+      connection.sendCall("user:get_following", {
+        cursor,
+      }),
   },
 
   /**

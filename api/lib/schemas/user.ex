@@ -28,6 +28,8 @@ defmodule Schemas.User do
     field(:googleId, :string)
     field(:facebookAccessToken, :string)
     field(:githubAccessToken, :string)
+    field(:youAreFollowing, :boolean, virtual: true)
+    field(:followsYou, :boolean, virtual: true)
     field(:twitterId, :string)
     field(:tokenVersion, :integer, default: 1)
     field(:online, :boolean)
@@ -52,7 +54,8 @@ defmodule Schemas.User do
   defimpl Jason.Encoder do
     @fields ~w(id username avatarUrl bio goal gender online
     lastOnline schoolName age bannerUrl staff contributions numLikes
-    inserted_at updated_at numFollowers numFollowing
+    inserted_at updated_at numFollowers numFollowing youAreFollowing followsYou
+
    )a
 
     def encode(user, opts) do

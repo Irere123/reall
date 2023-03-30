@@ -6,6 +6,18 @@ import { useTypeSafePrefetch } from "../shared-hooks/useTypeSafePrefetch";
 type Prefetch = ReturnType<typeof useTypeSafePrefetch>;
 
 const handlers = {
+  following: ({ username }: { username: string }) => ({
+    href: "/u/[username]/following",
+    as: `/u/${username}/following`,
+    onClick: (prefetch: Prefetch) =>
+      prefetch("getFollowList", [username, true, 0]),
+  }),
+  followers: ({ username }: { username: string }) => ({
+    href: "/u/[username]/followers",
+    as: `/u/${username}/followers`,
+    onClick: (prefetch: Prefetch) =>
+      prefetch("getFollowList", [username, false, 0]),
+  }),
   profile: ({ username }: { username: string }) => ({
     href: "/u/[username]",
     as: `/u/${username}`,
