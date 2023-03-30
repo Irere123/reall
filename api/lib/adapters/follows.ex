@@ -29,6 +29,34 @@ defmodule Adapters.Follows do
     )
   end
 
+  def delete(user_id, follower_id) do
+    {rows_affected, _} =
+      from(f in Follow, where: f.userId == ^user_id and f.followerId == ^follower_id)
+      |> Adapters.Repo.delete_all()
+
+    if rows_affected == 1 do
+      from(u in User,
+        where: u.id == ^user_id,
+        update: [
+          inc: [
+            numFollowers: -1
+          ]
+        ]
+      )
+      |> Adapters.Repo.update_all([])
+
+      from(u in User,
+        where: u.id == ^follower_id,
+        update: [
+          inc: [
+            numFollowing: -1
+          ]
+        ]
+      )
+      |> Adapters.Repo.update_all([])
+    end
+  end
+
   def insert(data) do
     %Follow{}
     |> Follow.insert_changeset(data)

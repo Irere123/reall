@@ -8,6 +8,8 @@ defmodule Api.Message.Manifest do
     "auth:request" => Auth.Request,
     "user:get_info" => User.GetInfo,
     "user:search" => User.Search,
+    "user:follow" => User.Follow,
+    "user:unfollow" => User.Unfollow,
     "feed:get_profiles" => Feed.GetProfiles,
     "feed:view" => Feed.View
   }

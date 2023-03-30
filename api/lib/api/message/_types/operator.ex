@@ -10,6 +10,8 @@ defenum(
     # user commands and casts: 0..63
     {User.GetInfo, 0},
     {User.Search, 1},
+    {User.Follow, 2},
+    {User.Unfollow, 3},
 
     # feed commands and casts: 64..127
     {Feed.GetProfiles, 64},
