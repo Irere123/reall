@@ -1,13 +1,9 @@
 import React from "react";
-import { GridPanel } from "../../ui/GridPanel";
+import { FixedGridPanel, GridPanel } from "../../ui/GridPanel";
 
 interface PanelProps {
   children: React.ReactNode;
 }
-
-const HeaderWrapper: React.FC<PanelProps> = ({ children }) => (
-  <div className={`flex mt-5 mb-7 h-6 items-center`}>{children}</div>
-);
 
 export const MiddlePanel: React.FC<
   PanelProps & { stickyChildren?: React.ReactNode }
@@ -27,4 +23,8 @@ export const MiddlePanel: React.FC<
       {children}
     </GridPanel>
   );
+};
+
+export const RightPanel: React.FC<PanelProps> = ({ children }) => {
+  return <FixedGridPanel>{children}</FixedGridPanel>;
 };

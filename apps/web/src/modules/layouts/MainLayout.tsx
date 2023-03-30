@@ -1,5 +1,6 @@
 import React from "react";
 import { MainInnerGrid } from "../../ui/MainGrid";
+import { RightPanel } from "./GridPanels";
 import { Sidebar } from "./Sidebar";
 
 export interface MainLayoutProps {
@@ -10,12 +11,14 @@ export interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({
   children,
-  leftPanel = <Sidebar />,
+  leftPanel = <div />,
+  rightPanel = <div />,
 }) => {
   let middle = (
     <>
       {leftPanel}
       {children}
+      <RightPanel>{rightPanel}</RightPanel>
     </>
   );
   let prepend = null;
