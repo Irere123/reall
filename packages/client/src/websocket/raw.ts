@@ -134,9 +134,6 @@ export const connect = (
 
       const message = JSON.parse(e.data);
 
-      // eslint-disable-next-line no-console
-      console.log(message);
-
       logger("in", message.op, message.p, message.ref, e.data);
 
       if (message.op === "auth:request:reply") {

@@ -68,7 +68,7 @@ export const FeedController: React.FC = () => {
   const [cursors, setCursors] = useState([0]);
 
   return (
-    <motion.div className="flex flex-col gap-5 w-full mb-3 ml-3">
+    <motion.div className="flex flex-col gap-5 w-full mb-3">
       {cursors.map((cursor, i) => (
         <Page
           key={cursor}
