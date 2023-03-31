@@ -9,14 +9,12 @@ const handlers = {
   following: ({ username }: { username: string }) => ({
     href: "/u/[username]/following",
     as: `/u/${username}/following`,
-    onClick: (prefetch: Prefetch) =>
-      prefetch("getFollowList", [username, true, 0]),
+    onClick: (prefetch: Prefetch) => prefetch("getFollowList", [username]),
   }),
   followers: ({ username }: { username: string }) => ({
     href: "/u/[username]/followers",
     as: `/u/${username}/followers`,
-    onClick: (prefetch: Prefetch) =>
-      prefetch("getFollowList", [username, false, 0]),
+    onClick: (prefetch: Prefetch) => prefetch("getFollowList", [username]),
   }),
   profile: ({ username }: { username: string }) => ({
     href: "/u/[username]",
