@@ -12,6 +12,7 @@ const ConnectionTaken: React.FC<ConnectionTakenProps> = ({}) => {
         <h4 className="text-primary-100 mb-4">
           The connection of this client have been taken by another one
         </h4>
+
         <Button
           onClick={() => {
             window.location.href = window.location.origin + "/dash";
